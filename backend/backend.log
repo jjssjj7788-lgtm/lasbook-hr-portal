@@ -1,0 +1,1125 @@
+
+> backend@0.0.1 start:dev
+> nest start --watch
+
+[2J[3J[H[[90mPM 9:35:12[0m] Starting compilation in watch mode...
+
+[[90mPM 9:35:15[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +14ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +3ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/attendance}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/session/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/salary-status, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPayrollController {/payroll}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/calculate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mJobTypesController {/job-types}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 54048  - [39m2026. 04. 19. PM 9:35:16 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2ms[39m
+[[31m[Nest] 65264  - [39m2026. 04. 19. PM 9:50:29 [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mError: 이미 신청한 교육과정입니다.
+    at CoursesService.enroll [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39msrc\courses\courses.service.ts:41:13[90m)[39m
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-execution-context.js:46:28
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-proxy.js:9:17
+[31m[Nest] 65264  - [39m2026. 04. 19. PM 9:50:36 [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientValidationError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\src\users\users.service.ts:14:29
+
+  11 }
+  12 
+  13 async findById(id: number): Promise<User | null> {
+→ 14   return this.prisma.user.findUnique({
+         where: {
+           id: undefined,
+       ?   email?: String,
+       ?   AND?: UserWhereInput | UserWhereInput[],
+       ?   OR?: UserWhereInput[],
+       ?   NOT?: UserWhereInput | [2J[3J[H[[90mPM 9:53:56[0m] File change detected. Starting incremental compilation...
+
+[[90mPM 9:53:57[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +14ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +3ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 22264  - [39m2026. 04. 19. PM 9:53:59 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/at[[90mPM 9:53:59[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +13ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 41676  - [39m2026. 04. 19. PM 9:54:00 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[2J[3J[H[[90mPM 9:54:18[0m] File change detected. Starting incremental compilation...
+
+[[90mPM 9:54:18[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +13ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 66332  - [39m2026. 04. 19. PM 9:54:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[[[90mPM 9:54:19[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +13ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51144  - [39m2026. 04. 19. PM 9:54:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[2J[3J[H[[90mPM 9:54:31[0m] File change detected. Starting incremental compilation...
+
+[[90mPM 9:54:31[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +12ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 11004  - [39m2026. 04. 19. PM 9:54:32 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[[[90mPM 9:54:32[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +12ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/attendance}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/session/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50608  - [39m2026. 04. 19. PM 9:54:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/salary-status, GET} route[39m[38;5;3m +0ms[2J[3J[H[[90mPM 9:54:56[0m] File change detected. Starting incremental compilation...
+
+[[90mPM 9:54:56[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +13ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 59320  - [39m2026. 04. 19. PM 9:54:57 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppCon[[90mPM 9:54:57[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +12ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/attendance}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/session/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/salary-status, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPayrollController {/payroll}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/calculate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mJobTypesController {/job-types}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 39324  - [39m2026. 04. 19. PM 9:54:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, POST} route[39m[38;5;3m +1ms[39m
+[2J[3J[H[[90mPM 9:55:18[0m] File change detected. Starting incremental compilation...
+
+[[90mPM 9:55:18[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 28156  - [39m2026. 04. 19. PM 9:55:19 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 28156  - [39m2026. 04. 19. PM 9:55:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +13ms[39m
+[32m[Nest] 28156  - [39m2026. 04. 19. PM 9:55:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 28156  - [39m2026. 04. 19. PM 9:55:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 28156  - [39m2026. 04. 19. PM 9:55:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 28156  - [39m2026. 04. 19. PM 9:55:19 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;[[90mPM 9:55:19[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +11ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/attendance}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/session/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/salary-status, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPayrollController {/payroll}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/calculate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mJobTypesController {/job-types}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id/tiers, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 10680  - [39m2026. 04. 19. PM 9:55:20 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+[2J[3J[H[[90mPM 9:55:35[0m] File change detected. Starting incremental compilation...
+
+[[90mPM 9:55:37[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +12ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/attendance}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/session/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/salary-status, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPayrollController {/payroll}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/calculate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mJobTypesController {/job-types}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id/tiers, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 51336  - [39m2026. 04. 19. PM 9:55:38 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +4ms[39m
+[2J[3J[H[[90mPM 9:55:45[0m] File change detected. Starting incremental compilation...
+
+[[90mPM 9:55:46[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +12ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/attendance}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/session/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/salary-status, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPayrollController {/payroll}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/calculate, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mJobTypesController {/job-types}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id/tiers, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 21724  - [39m2026. 04. 19. PM 9:55:47 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+[2J[3J[H[[90mPM 9:56:10[0m] File change detected. Starting incremental compilation...
+
+[96msrc/sessions/sessions.service.ts[0m:[93m3[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module 'uuid' or its corresponding type declarations.
+
+[7m3[0m import { v4 as uuidv4 } from 'uuid';
+[7m [0m [91m                             ~~~~~~[0m
+
+[[90mPM 9:56:10[0m] Found 1 error. Watching for file changes.
+
+[2J[3J[H[[90mPM 9:56:36[0m] File change detected. Starting incremental compilation...
+
+[[90mPM 9:56:37[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90mPM 9:56:37[0m] File change detected. Starting incremental compilation...
+
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +13ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/attendance}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/session/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/salary-status, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/my, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPayrollController {/payroll}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/calculate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mJobTypesController {/job-types}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id/tiers, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 35212  - [39m2026. 04. 19. PM 9:56:38 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+[[90mPM 9:56:39[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +12ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/attendance}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/session/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/salary-status, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPayrollController {/payroll}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/calculate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mJobTypesController {/job-types}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id/tiers, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 50392  - [39m2026. 04. 19. PM 9:56:40 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+[2J[3J[H[[90mPM 9:56:58[0m] File change detected. Starting incremental compilation...
+
+[[90mPM 9:57:00[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:00 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +11ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id/qr-generate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id/qr-revoke, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/attendance}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/session/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/salary-status, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPayrollController {/payroll}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/calculate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mJobTypesController {/job-types}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id/tiers, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 64516  - [39m2026. 04. 19. PM 9:57:01 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+[2J[3J[H[[90mPM 9:57:25[0m] File change detected. Starting incremental compilation...
+
+[[90mPM 9:57:26[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +12ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id/qr-generate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id/qr-revoke, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/attendance}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/session/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/salary-status, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPayrollController {/payroll}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/calculate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mJobTypesController {/job-types}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id/tiers, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 36232  - [39m2026. 04. 19. PM 9:57:27 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2ms[39m
+[2J[3J[H[[90mPM 9:57:35[0m] File change detected. Starting incremental compilation...
+
+[[90mPM 9:57:36[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +11ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEducationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJobTypesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mSessionsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAttendanceModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPayrollModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id/reset-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/upload-excel, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/admin-only, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEducationController {/education}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:id/enroll, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mSessionsController {/sessions}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/lecture, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id/qr-generate, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/sessions/:id/qr-revoke, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAttendanceController {/attendance}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/session/:sessionId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/salary-status, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/attendance/qr-scan, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPayrollController {/payroll}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/calculate, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/payroll, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mJobTypesController {/job-types}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/:id/tiers, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/job-types/tiers/:tierId, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 57096  - [39m2026. 04. 19. PM 9:57:37 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+[31m[Nest] 57096  - [39m2026. 04. 19. PM 10:01:16 [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientValidationError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\src\users\users.service.ts:14:29
+
+  11 }
+  12 
+  13 async findById(id: number): Promise<User | null> {
+→ 14   return this.prisma.user.findUnique({
+         where: {
+           id: undefined,
+       ?   email?: String,
+       ?   AND?: UserWhereInput | UserWhereInput[],
+       ?   OR?: UserWhereInput[],
+       ?   NOT?: UserWhereInput | UserWhereInput[],
+       ?   password?: StringFilter | String,
+       ?   name?: StringFilter | String,
+       ?   phone?: StringNullableFilter | String | Null,
+       ?   role?: StringFilter | String,
+       ?   cohort?: StringNullableFilter | String | Null,
+       ?   church?: StringNullableFilter | String | Null,
+       ?   position?: StringNullableFilter | String | Null,
+       ?   type?: StringNullableFilter | String | Null,
+       ?   types?: StringNullableFilter | String | Null,
+       ?   worksInStore?: BoolNullableFilter | Boolean | Null,
+       ?   bank?: StringNullableFilter | String | Null,
+       ?   accountNumber?: StringNullableFilter | String | Null,
+       ?   accountHolder?: StringNullableFilter | String | Null,
+       ?   investmentAmount?: IntNullableFilter | Int | Null,
+       ?   customSalary?: IntNullableFilter | Int | Null,
+       ?   createdAt?: DateTimeFilter | DateTime,
+       ?   updatedAt?: DateTimeFilter | DateTime,
+       ?   enrollments?: EnrollmentListRelationFilter,
+       ?   attendances?: AttendanceListRelationFilter,
+       ?   payrolls?: PayrollListRelationFilter
+         }
+       })
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\core\errorRendering\throwValidationException.ts:45:9[90m)[39m
+    at ei.handleRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:202:7[90m)[39m
+    at ei.handleAndLogRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:174:12[90m)[39m
+    at ei.request [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:143:12[90m)[39m
+    at async a [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\getPrismaClient.ts:833:24[90m)[39m
+    at async AuthController.getProfile [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39msrc\auth\auth.controller.ts:32:18[90m)[39m
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-execution-context.js:46:28
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-proxy.js:9:17 {
+  clientVersion: [32m'6.19.3'[39m
+}
+[31m[Nest] 57096  - [39m2026. 04. 19. PM 10:01:16 [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientValidationError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\src\users\users.service.ts:14:29
+
+  11 }
+  12 
+  13 async findById(id: number): Promise<User | null> {
+→ 14   return this.prisma.user.findUnique({
+         where: {
+           id: undefined,
+       ?   email?: String,
+       ?   AND?: UserWhereInput | UserWhereInput[],
+       ?   OR?: UserWhereInput[],
+       ?   NOT?: UserWhereInput | UserWhereInput[],
+       ?   password?: StringFilter | String,
+       ?   name?: StringFilter | String,
+       ?   phone?: StringNullableFilter | String | Null,
+       ?   role?: StringFilter | String,
+       ?   cohort?: StringNullableFilter | String | Null,
+       ?   church?: StringNullableFilter | String | Null,
+       ?   position?: StringNullableFilter | String | Null,
+       ?   type?: StringNullableFilter | String | Null,
+       ?   types?: StringNullableFilter | String | Null,
+       ?   worksInStore?: BoolNullableFilter | Boolean | Null,
+       ?   bank?: StringNullableFilter | String | Null,
+       ?   accountNumber?: StringNullableFilter | String | Null,
+       ?   accountHolder?: StringNullableFilter | String | Null,
+       ?   investmentAmount?: IntNullableFilter | Int | Null,
+       ?   customSalary?: IntNullableFilter | Int | Null,
+       ?   createdAt?: DateTimeFilter | DateTime,
+       ?   updatedAt?: DateTimeFilter | DateTime,
+       ?   enrollments?: EnrollmentListRelationFilter,
+       ?   attendances?: AttendanceListRelationFilter,
+       ?   payrolls?: PayrollListRelationFilter
+         }
+       })
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\core\errorRendering\throwValidationException.ts:45:9[90m)[39m
+    at ei.handleRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:202:7[90m)[39m
+    at ei.handleAndLogRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:174:12[90m)[39m
+    at ei.request [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:143:12[90m)[39m
+    at async a [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\getPrismaClient.ts:833:24[90m)[39m
+    at async AuthController.getProfile [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39msrc\auth\auth.controller.ts:32:18[90m)[39m
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-execution-context.js:46:28
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-proxy.js:9:17 {
+  clientVersion: [32m'6.19.3'[39m
+}
+[31m[Nest] 57096  - [39m2026. 04. 19. PM 10:02:54 [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientValidationError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\src\users\users.service.ts:14:29
+
+  11 }
+  12 
+  13 async findById(id: number): Promise<User | null> {
+→ 14   return this.prisma.user.findUnique({
+         where: {
+           id: undefined,
+       ?   email?: String,
+       ?   AND?: UserWhereInput | UserWhereInput[],
+       ?   OR?: UserWhereInput[],
+       ?   NOT?: UserWhereInput | UserWhereInput[],
+       ?   password?: StringFilter | String,
+       ?   name?: StringFilter | String,
+       ?   phone?: StringNullableFilter | String | Null,
+       ?   role?: StringFilter | String,
+       ?   cohort?: StringNullableFilter | String | Null,
+       ?   church?: StringNullableFilter | String | Null,
+       ?   position?: StringNullableFilter | String | Null,
+       ?   type?: StringNullableFilter | String | Null,
+       ?   types?: StringNullableFilter | String | Null,
+       ?   worksInStore?: BoolNullableFilter | Boolean | Null,
+       ?   bank?: StringNullableFilter | String | Null,
+       ?   accountNumber?: StringNullableFilter | String | Null,
+       ?   accountHolder?: StringNullableFilter | String | Null,
+       ?   investmentAmount?: IntNullableFilter | Int | Null,
+       ?   customSalary?: IntNullableFilter | Int | Null,
+       ?   createdAt?: DateTimeFilter | DateTime,
+       ?   updatedAt?: DateTimeFilter | DateTime,
+       ?   enrollments?: EnrollmentListRelationFilter,
+       ?   attendances?: AttendanceListRelationFilter,
+       ?   payrolls?: PayrollListRelationFilter
+         }
+       })
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\core\errorRendering\throwValidationException.ts:45:9[90m)[39m
+    at ei.handleRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:202:7[90m)[39m
+    at ei.handleAndLogRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:174:12[90m)[39m
+    at ei.request [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:143:12[90m)[39m
+    at async a [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\getPrismaClient.ts:833:24[90m)[39m
+    at async AuthController.getProfile [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39msrc\auth\auth.controller.ts:32:18[90m)[39m
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-execution-context.js:46:28
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-proxy.js:9:17 {
+  clientVersion: [32m'6.19.3'[39m
+}
+[31m[Nest] 57096  - [39m2026. 04. 19. PM 10:02:54 [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientValidationError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\src\users\users.service.ts:14:29
+
+  11 }
+  12 
+  13 async findById(id: number): Promise<User | null> {
+→ 14   return this.prisma.user.findUnique({
+         where: {
+           id: undefined,
+       ?   email?: String,
+       ?   AND?: UserWhereInput | UserWhereInput[],
+       ?   OR?: UserWhereInput[],
+       ?   NOT?: UserWhereInput | UserWhereInput[],
+       ?   password?: StringFilter | String,
+       ?   name?: StringFilter | String,
+       ?   phone?: StringNullableFilter | String | Null,
+       ?   role?: StringFilter | String,
+       ?   cohort?: StringNullableFilter | String | Null,
+       ?   church?: StringNullableFilter | String | Null,
+       ?   position?: StringNullableFilter | String | Null,
+       ?   type?: StringNullableFilter | String | Null,
+       ?   types?: StringNullableFilter | String | Null,
+       ?   worksInStore?: BoolNullableFilter | Boolean | Null,
+       ?   bank?: StringNullableFilter | String | Null,
+       ?   accountNumber?: StringNullableFilter | String | Null,
+       ?   accountHolder?: StringNullableFilter | String | Null,
+       ?   investmentAmount?: IntNullableFilter | Int | Null,
+       ?   customSalary?: IntNullableFilter | Int | Null,
+       ?   createdAt?: DateTimeFilter | DateTime,
+       ?   updatedAt?: DateTimeFilter | DateTime,
+       ?   enrollments?: EnrollmentListRelationFilter,
+       ?   attendances?: AttendanceListRelationFilter,
+       ?   payrolls?: PayrollListRelationFilter
+         }
+       })
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\core\errorRendering\throwValidationException.ts:45:9[90m)[39m
+    at ei.handleRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:202:7[90m)[39m
+    at ei.handleAndLogRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:174:12[90m)[39m
+    at ei.request [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:143:12[90m)[39m
+    at async a [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\getPrismaClient.ts:833:24[90m)[39m
+    at async AuthController.getProfile [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39msrc\auth\auth.controller.ts:32:18[90m)[39m
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-execution-context.js:46:28
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-proxy.js:9:17 {
+  clientVersion: [32m'6.19.3'[39m
+}
+[31m[Nest] 57096  - [39m2026. 04. 19. PM 10:05:52 [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientValidationError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\src\users\users.service.ts:14:29
+
+  11 }
+  12 
+  13 async findById(id: number): Promise<User | null> {
+→ 14   return this.prisma.user.findUnique({
+         where: {
+           id: undefined,
+       ?   email?: String,
+       ?   AND?: UserWhereInput | UserWhereInput[],
+       ?   OR?: UserWhereInput[],
+       ?   NOT?: UserWhereInput | UserWhereInput[],
+       ?   password?: StringFilter | String,
+       ?   name?: StringFilter | String,
+       ?   phone?: StringNullableFilter | String | Null,
+       ?   role?: StringFilter | String,
+       ?   cohort?: StringNullableFilter | String | Null,
+       ?   church?: StringNullableFilter | String | Null,
+       ?   position?: StringNullableFilter | String | Null,
+       ?   type?: StringNullableFilter | String | Null,
+       ?   types?: StringNullableFilter | String | Null,
+       ?   worksInStore?: BoolNullableFilter | Boolean | Null,
+       ?   bank?: StringNullableFilter | String | Null,
+       ?   accountNumber?: StringNullableFilter | String | Null,
+       ?   accountHolder?: StringNullableFilter | String | Null,
+       ?   investmentAmount?: IntNullableFilter | Int | Null,
+       ?   customSalary?: IntNullableFilter | Int | Null,
+       ?   createdAt?: DateTimeFilter | DateTime,
+       ?   updatedAt?: DateTimeFilter | DateTime,
+       ?   enrollments?: EnrollmentListRelationFilter,
+       ?   attendances?: AttendanceListRelationFilter,
+       ?   payrolls?: PayrollListRelationFilter
+         }
+       })
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\core\errorRendering\throwValidationException.ts:45:9[90m)[39m
+    at ei.handleRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:202:7[90m)[39m
+    at ei.handleAndLogRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:174:12[90m)[39m
+    at ei.request [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:143:12[90m)[39m
+    at async a [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\getPrismaClient.ts:833:24[90m)[39m
+    at async AuthController.getProfile [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39msrc\auth\auth.controller.ts:32:18[90m)[39m
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-execution-context.js:46:28
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-proxy.js:9:17 {
+  clientVersion: [32m'6.19.3'[39m
+}
+[31m[Nest] 57096  - [39m2026. 04. 19. PM 10:05:52 [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39mPrismaClientValidationError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\src\users\users.service.ts:14:29
+
+  11 }
+  12 
+  13 async findById(id: number): Promise<User | null> {
+→ 14   return this.prisma.user.findUnique({
+         where: {
+           id: undefined,
+       ?   email?: String,
+       ?   AND?: UserWhereInput | UserWhereInput[],
+       ?   OR?: UserWhereInput[],
+       ?   NOT?: UserWhereInput | UserWhereInput[],
+       ?   password?: StringFilter | String,
+       ?   name?: StringFilter | String,
+       ?   phone?: StringNullableFilter | String | Null,
+       ?   role?: StringFilter | String,
+       ?   cohort?: StringNullableFilter | String | Null,
+       ?   church?: StringNullableFilter | String | Null,
+       ?   position?: StringNullableFilter | String | Null,
+       ?   type?: StringNullableFilter | String | Null,
+       ?   types?: StringNullableFilter | String | Null,
+       ?   worksInStore?: BoolNullableFilter | Boolean | Null,
+       ?   bank?: StringNullableFilter | String | Null,
+       ?   accountNumber?: StringNullableFilter | String | Null,
+       ?   accountHolder?: StringNullableFilter | String | Null,
+       ?   investmentAmount?: IntNullableFilter | Int | Null,
+       ?   customSalary?: IntNullableFilter | Int | Null,
+       ?   createdAt?: DateTimeFilter | DateTime,
+       ?   updatedAt?: DateTimeFilter | DateTime,
+       ?   enrollments?: EnrollmentListRelationFilter,
+       ?   attendances?: AttendanceListRelationFilter,
+       ?   payrolls?: PayrollListRelationFilter
+         }
+       })
+
+Argument `where` of type UserWhereUniqueInput needs at least one of `id` or `email` arguments. Available options are marked with ?.
+    at throwValidationException [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\core\errorRendering\throwValidationException.ts:45:9[90m)[39m
+    at ei.handleRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:202:7[90m)[39m
+    at ei.handleAndLogRequestError [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:174:12[90m)[39m
+    at ei.request [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\RequestHandler.ts:143:12[90m)[39m
+    at async a [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@prisma\client[24m\src\runtime\getPrismaClient.ts:833:24[90m)[39m
+    at async AuthController.getProfile [90m(C:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39msrc\auth\auth.controller.ts:32:18[90m)[39m
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-execution-context.js:46:28
+    at async [90mC:\Users\정상진\OneDrive\바탕 화면\라스북\직원 관리 프로젝트\backend\[39mnode_modules\[4m@nestjs\core[24m\router\router-proxy.js:9:17 {
+  clientVersion: [32m'6.19.3'[39m
+}

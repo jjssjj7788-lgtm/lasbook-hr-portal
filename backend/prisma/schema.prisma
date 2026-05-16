@@ -1,0 +1,211 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// ─────────────────────────────────────────────────
+// 1. 프로젝트 (멀티 프로젝트 기반)
+// ─────────────────────────────────────────────────
+model Project {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  status      String   @default("ACTIVE") // ACTIVE, CLOSED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  positions        Position[]
+  users            User[]
+  attendances      Attendance[]
+  sales            Sale[]
+  activityReports  ActivityReport[]
+  activityFees     ActivityFee[]
+  commissions      MonthlyCommission[]
+}
+
+// ─────────────────────────────────────────────────
+// 2. 직급 (프로젝트별 동적 생성 가능)
+// ─────────────────────────────────────────────────
+model Position {
+  id        Int     @id @default(autoincrement())
+  projectId Int
+  name      String  // 테바, 도제, 수련생, 띠 매니저
+  code      String  // TEBA, DOJE, TRAINEE, MANAGER
+  fee1st    Int     @default(0) // 1차 고정 활동비 (원)
+  fee2nd    Int     @default(0) // 2차 고정 활동비 (원)
+
+  project   Project  @relation(fields: [projectId], references: [id])
+  users     User[]
+
+  @@unique([projectId, code])
+}
+
+// ─────────────────────────────────────────────────
+// 3. 상품 가격표
+// ─────────────────────────────────────────────────
+model Product {
+  id          Int     @id @default(autoincrement())
+  memberType  String  // 구독회원, 주인형 점주
+  series      String  // K, S, G, -
+  step        String? // K2, K3, S2, G1 등 세부 단계
+  language    String  // 한글, 영어, -
+  price       Int     // 정가 (원)
+  isActive    Boolean @default(true)
+
+  sales       Sale[]
+}
+
+// ─────────────────────────────────────────────────
+// 4. 사용자 (사원번호 PK, 계층구조 포함)
+// ─────────────────────────────────────────────────
+model User {
+  employeeId        String    @id       // 사원번호 (예: LAS-001)
+  projectId         Int
+  positionId        Int
+  password          String
+  name              String
+  parentEmployeeId  String?             // 상위 관리자 사번 (계층구조)
+  contractStart     DateTime
+  isStoreOwner      Boolean   @default(false) // 주인형 점주 여부
+  phone             String?
+  bank              String?
+  accountNumber     String?
+  accountHolder     String?
+  role              String    @default("USER") // ADMIN, USER
+  isActive          Boolean   @default(true)
+  notes             String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  project           Project   @relation(fields: [projectId], references: [id])
+  position          Position  @relation(fields: [positionId], references: [id])
+  parent            User?     @relation("UserHierarchy", fields: [parentEmployeeId], references: [employeeId])
+  subordinates      User[]    @relation("UserHierarchy")
+
+  traineeAttendances Attendance[] @relation("TraineeAttendance")
+  mentorAttendances  Attendance[] @relation("MentorAttendance")
+  sales              Sale[]
+  activityReports    ActivityReport[]
+  activityFees       ActivityFee[]
+  commissions        MonthlyCommission[]
+}
+
+// ─────────────────────────────────────────────────
+// 5. 출석 관리 (교통비 자동 발생)
+// ─────────────────────────────────────────────────
+model Attendance {
+  id            Int      @id @default(autoincrement())
+  projectId     Int
+  educationDate DateTime
+  branchName    String   // 지점명 (예: 강동)
+  branchLabel   String   // 자동 조합: 강동_20260517
+  traineeId     String
+  mentorId      String
+  isPresent     Boolean  @default(false)
+  transportFee  Int      @default(0) // 출석 시 50,000원 자동 발생
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  project  Project @relation(fields: [projectId], references: [id])
+  trainee  User    @relation("TraineeAttendance", fields: [traineeId], references: [employeeId])
+  mentor   User    @relation("MentorAttendance", fields: [mentorId], references: [employeeId])
+}
+
+// ─────────────────────────────────────────────────
+// 6. 판매 실적 (카드 수수료 자동 계산)
+// ─────────────────────────────────────────────────
+model Sale {
+  id            Int      @id @default(autoincrement())
+  projectId     Int
+  saleDate      DateTime
+  employeeId    String
+  customerName  String
+  productId     Int
+  paymentMethod String   // CARD, CASH
+  actualAmount  Int      // 실결제금액
+  deductedFee   Int      @default(0) // 공제수수료 (카드: 2.5%)
+  netAmount     Int      // 순매출 = actualAmount - deductedFee
+  salesWeek     Int      @default(1) // 계약 시작일 기준 자동 계산
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  project   Project  @relation(fields: [projectId], references: [id])
+  employee  User     @relation(fields: [employeeId], references: [employeeId])
+  product   Product  @relation(fields: [productId], references: [id])
+}
+
+// ─────────────────────────────────────────────────
+// 7. 일일 활동 보고서 (평가 블라인드 정책)
+// ─────────────────────────────────────────────────
+model ActivityReport {
+  id               Int      @id @default(autoincrement())
+  projectId        Int
+  submittedAt      DateTime @default(now())
+  employeeId       String
+  prospectCount    Int      @default(0)  // 만난 가망고객 수
+  counselContent   String?              // 주요 상담 내용
+  specialNotes     String?              // 특이사항
+  adminEvaluation  String?              // O, △, X — USER 화면에서 완전 은닉
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  project   Project @relation(fields: [projectId], references: [id])
+  employee  User    @relation(fields: [employeeId], references: [employeeId])
+}
+
+// ─────────────────────────────────────────────────
+// 8. 초기 정착 활동비 (1개월 차, 1차/2차 분리)
+// ─────────────────────────────────────────────────
+model ActivityFee {
+  id             Int      @id @default(autoincrement())
+  projectId      Int
+  payMonth       String   // "2026-05" 형식
+  employeeId     String
+  paymentRound   Int      // 1 또는 2
+  grossAmount    Int      // 발생액 (Position.fee1st / fee2nd)
+  isEligible     Boolean  @default(true)  // 성과 충족 여부
+  netAmount      Int      // 세후 실수령액 (grossAmount * 0.967)
+  paymentStatus  String   @default("PENDING") // PENDING, PAID
+  paidAt         DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  project   Project @relation(fields: [projectId], references: [id])
+  employee  User    @relation(fields: [employeeId], references: [employeeId])
+
+  @@unique([employeeId, paymentRound, payMonth])
+}
+
+// ─────────────────────────────────────────────────
+// 9. 월간 성과급 (등급별 비율 + 주인형 점주 지연 지급)
+// ─────────────────────────────────────────────────
+model MonthlyCommission {
+  id               Int      @id @default(autoincrement())
+  projectId        Int
+  settlementMonth  String   // "2026-05" 형식
+  employeeId       String
+  salesCount       Int      @default(0)  // 당월 유치건수
+  netSalesTotal    Int      @default(0)  // 순매출 합계 (성과수당 계산 기준)
+  achievementGrade String?               // 1S~5S 또는 1띠~12띠
+  performanceRate  Float    @default(0)  // 성과수당 비율 (예: 0.20)
+  performanceBonus Int      @default(0)  // 성과수당 = netSalesTotal * performanceRate
+  subsidy          Int      @default(0)  // 보조금 (등급별 고정)
+  totalGross       Int      @default(0)  // 총발생액 = performanceBonus + subsidy
+  netAmount        Int      @default(0)  // 세후 실수령액 (totalGross * 0.967)
+  firstPaymentDue  DateTime?             // 지급 예정일 (isStoreOwner → 익익월, 일반 → 익월)
+  paymentStatus    String   @default("PENDING") // PENDING, PAID
+  paidAt           DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  project   Project @relation(fields: [projectId], references: [id])
+  employee  User    @relation(fields: [employeeId], references: [employeeId])
+
+  @@unique([employeeId, settlementMonth])
+}

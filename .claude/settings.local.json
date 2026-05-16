@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(timeout 10 npm run start:dev)",
+      "Bash(npm run *)",
+      "Bash(echo \"백엔드 PID: $!\")",
+      "Bash(echo \"프론트엔드 PID: $!\")",
+      "Bash(grep -E \"\\\\.ts$\")"
+    ]
+  }
+}
