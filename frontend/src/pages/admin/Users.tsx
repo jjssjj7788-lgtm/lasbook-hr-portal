@@ -25,11 +25,30 @@ function fmt(n: number) { return `${n.toLocaleString('ko-KR')}원`; }
 function UserModal({ user, positions, projects, onClose, onSave }: any) {
   const [form, setForm] = useState(
     user
-      ? { ...user, contractStart: user.contractStart?.split('T')[0] ?? '' }
-      : { employeeId: '', projectId: projects[0]?.id ?? 1, positionId: '', name: '', password: '', parentEmployeeId: '', contractStart: format(new Date(), 'yyyy-MM-dd'), isStoreOwner: false, phone: '', bank: '', accountNumber: '', accountHolder: '', role: 'USER' }
+      ? { ...user, contractStart: user.contractStart?.split('T')[0] ?? '', roomId: user.roomId ?? '' }
+      : { employeeId: '', projectId: projects[0]?.id ?? 1, positionId: '', roomId: '', name: '', password: '', parentEmployeeId: '', contractStart: format(new Date(), 'yyyy-MM-dd'), isStoreOwner: false, phone: '', bank: '', accountNumber: '', accountHolder: '', role: 'USER' }
   );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [rooms, setRooms] = useState<any[]>([]);
+  const [newRoomName, setNewRoomName] = useState('');
+  const [showNewRoom, setShowNewRoom] = useState(false);
+
+  useEffect(() => {
+    if (form.projectId) {
+      api.get(`/rooms?projectId=${form.projectId}`).then((r) => setRooms(r.data)).catch(() => {});
+    }
+  }, [form.projectId]);
+
+  const handleCreateRoomInline = async () => {
+    if (!newRoomName.trim()) return;
+    try {
+      const res = await api.post('/rooms', { projectId: Number(form.projectId), name: newRoomName.trim() });
+      setRooms([...rooms, res.data]);
+      setForm((f: any) => ({ ...f, roomId: res.data.id }));
+      setNewRoomName(''); setShowNewRoom(false);
+    } catch {}
+  };
 
   const projectPositions = positions.filter((p: any) => p.projectId === Number(form.projectId));
 
@@ -37,15 +56,29 @@ function UserModal({ user, positions, projects, onClose, onSave }: any) {
     e.preventDefault();
     setLoading(true);
     setError('');
+
+    // 유효성 검사
+    if (!form.positionId) { setError('직급을 선택해 주세요.'); setLoading(false); return; }
+    if (!form.projectId) { setError('프로젝트를 선택해 주세요.'); setLoading(false); return; }
+    if (!form.name.trim()) { setError('이름을 입력해 주세요.'); setLoading(false); return; }
+
     try {
+      const payload = {
+        ...form,
+        projectId: Number(form.projectId),
+        positionId: Number(form.positionId),
+        roomId: form.roomId ? Number(form.roomId) : null,
+        parentEmployeeId: form.parentEmployeeId || null,
+      };
       if (user) {
-        await api.put(`/users/${user.employeeId}`, form);
+        await api.put(`/users/${user.employeeId}`, payload);
       } else {
-        await api.post('/users', form);
+        await api.post('/users', payload);
       }
       onSave();
     } catch (err: any) {
-      setError(err.response?.data?.message || '저장 실패');
+      const msg = err.response?.data?.message;
+      setError(Array.isArray(msg) ? msg.join(', ') : msg || '저장 실패');
     } finally {
       setLoading(false);
     }
@@ -80,6 +113,30 @@ function UserModal({ user, positions, projects, onClose, onSave }: any) {
             </SelectField>
           </div>
 
+          {/* 팀(Room) 선택 + 인라인 생성 */}
+          <div>
+            <label className="block text-xs text-slate-400 mb-1">소속 팀(Room)</label>
+            <div className="flex gap-2">
+              <select value={form.roomId ?? ''} onChange={(e) => setForm({ ...form, roomId: e.target.value })}
+                className="flex-1 px-3 py-2 bg-slate-800 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="">팀 미배정</option>
+                {rooms.map((r: any) => <option key={r.id} value={r.id}>{r.name} ({r.members?.length ?? 0}명)</option>)}
+              </select>
+              <button type="button" onClick={() => setShowNewRoom(!showNewRoom)}
+                className="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg text-xs transition-colors whitespace-nowrap">+ 새 팀</button>
+            </div>
+            {showNewRoom && (
+              <div className="flex gap-2 mt-2">
+                <input autoFocus value={newRoomName} onChange={(e) => setNewRoomName(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); handleCreateRoomInline(); } }}
+                  placeholder="팀 이름 입력 후 엔터"
+                  className="flex-1 px-3 py-2 bg-slate-800 border border-indigo-500 rounded-lg text-white text-sm focus:outline-none" />
+                <button type="button" onClick={handleCreateRoomInline}
+                  className="px-3 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs">생성</button>
+              </div>
+            )}
+          </div>
+
           <div className="grid grid-cols-2 gap-4">
             <InputField label="계약 시작일 *" type="date" value={form.contractStart} onChange={(v: string) => setForm({ ...form, contractStart: v })} required />
             <InputField label="상위 관리자 사번" value={form.parentEmployeeId ?? ''} onChange={(v: string) => setForm({ ...form, parentEmployeeId: v })} placeholder="예: ADMIN-001" />
@@ -93,16 +150,30 @@ function UserModal({ user, positions, projects, onClose, onSave }: any) {
             <InputField label="예금주" value={form.accountHolder ?? ''} onChange={(v: string) => setForm({ ...form, accountHolder: v })} />
           </div>
 
-          <div className="flex items-center gap-4">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" checked={form.isStoreOwner} onChange={(e) => setForm({ ...form, isStoreOwner: e.target.checked })} className="w-4 h-4 accent-indigo-500" />
-              <span className="text-sm text-slate-300">주인형 점주 (지급 익익월 지연)</span>
+          {/* 주인형 점주 & 관리자 권한 완전 분리 */}
+          <div className="p-4 bg-slate-800/50 rounded-xl space-y-3 border border-white/5">
+            <div className="text-xs text-slate-500 font-medium">추가 설정</div>
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" checked={form.isStoreOwner} onChange={(e) => setForm({ ...form, isStoreOwner: e.target.checked })} className="w-4 h-4 mt-0.5 accent-amber-500" />
+              <div>
+                <span className="text-sm text-slate-300">🏪 주인형 점주</span>
+                <p className="text-xs text-slate-500 mt-0.5">지급 방식: 익익월 지연 지급 (시스템 권한과 무관)</p>
+              </div>
             </label>
             {user && (
-              <SelectField label="" value={form.role} onChange={(v: string) => setForm({ ...form, role: v })}>
-                <option value="USER">USER</option>
-                <option value="ADMIN">ADMIN</option>
-              </SelectField>
+              <div className="pt-2 border-t border-white/5">
+                <div className="text-xs text-slate-500 mb-2">🔑 시스템 권한 (관리자만 변경 가능)</div>
+                <div className="flex gap-2">
+                  {['USER', 'ADMIN'].map((r) => (
+                    <button key={r} type="button" onClick={() => setForm({ ...form, role: r })}
+                      className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all border ${
+                        form.role === r
+                          ? r === 'ADMIN' ? 'bg-red-500/20 text-red-300 border-red-500/40' : 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40'
+                          : 'bg-slate-700 text-slate-400 border-white/5 hover:bg-slate-600'
+                      }`}>{r === 'ADMIN' ? '관리자(ADMIN)' : '일반(USER)'}</button>
+                  ))}
+                </div>
+              </div>
             )}
           </div>
 

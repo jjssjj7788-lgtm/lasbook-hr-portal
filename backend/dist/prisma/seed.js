@@ -49,22 +49,29 @@ async function main() {
         create: { name: '시니어 라스', description: '시니어 대상 라스북 영업 프로젝트', status: 'ACTIVE' },
     });
     console.log('✅ Projects created:', mathDdi.name, seniorLas.name);
-    const positionData = [
+    const mathDdiPositions = [
+        { code: 'MANAGER', name: '띠 매니저', fee1st: 500000, fee2nd: 500000 },
+    ];
+    const seniorLasPositions = [
         { code: 'TEBA', name: '테바', fee1st: 1000000, fee2nd: 1000000 },
         { code: 'DOJE', name: '도제', fee1st: 500000, fee2nd: 500000 },
         { code: 'TRAINEE', name: '수련생', fee1st: 0, fee2nd: 0 },
-        { code: 'MANAGER', name: '띠 매니저', fee1st: 500000, fee2nd: 500000 },
     ];
-    for (const project of [mathDdi, seniorLas]) {
-        for (const pos of positionData) {
-            await prisma.position.upsert({
-                where: { projectId_code: { projectId: project.id, code: pos.code } },
-                update: { name: pos.name, fee1st: pos.fee1st, fee2nd: pos.fee2nd },
-                create: { projectId: project.id, ...pos },
-            });
-        }
+    for (const pos of mathDdiPositions) {
+        await prisma.position.upsert({
+            where: { projectId_code: { projectId: mathDdi.id, code: pos.code } },
+            update: { name: pos.name, fee1st: pos.fee1st, fee2nd: pos.fee2nd },
+            create: { projectId: mathDdi.id, ...pos },
+        });
     }
-    console.log('✅ Positions created for all projects');
+    for (const pos of seniorLasPositions) {
+        await prisma.position.upsert({
+            where: { projectId_code: { projectId: seniorLas.id, code: pos.code } },
+            update: { name: pos.name, fee1st: pos.fee1st, fee2nd: pos.fee2nd },
+            create: { projectId: seniorLas.id, ...pos },
+        });
+    }
+    console.log('✅ Positions created: 수학의 띠(매니저), 시니어 라스(테바/도제/수련생)');
     const products = [
         { memberType: '구독회원', series: 'K', step: null, language: '한글', price: 1600000 },
         { memberType: '구독회원', series: 'K', step: null, language: '영어', price: 3200000 },

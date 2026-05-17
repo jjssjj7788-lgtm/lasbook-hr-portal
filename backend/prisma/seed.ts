@@ -24,26 +24,36 @@ async function main() {
   console.log('✅ Projects created:', mathDdi.name, seniorLas.name);
 
   // ─────────────────────────────────────────────────
-  // 2. 직급 생성 (프로젝트별)
+  // 2. 직급 생성 (프로젝트별 분리)
   // ─────────────────────────────────────────────────
-  const positionData = [
-    { code: 'TEBA',    name: '테바',      fee1st: 1000000, fee2nd: 1000000 },
-    { code: 'DOJE',    name: '도제',      fee1st: 500000,  fee2nd: 500000  },
-    { code: 'TRAINEE', name: '수련생',    fee1st: 0,       fee2nd: 0       }, // 교통비로 별도 정산
-    { code: 'MANAGER', name: '띠 매니저', fee1st: 500000,  fee2nd: 500000  },
+  // 수학의 띠: 매니저만
+  const mathDdiPositions = [
+    { code: 'MANAGER', name: '띠 매니저', fee1st: 500000, fee2nd: 500000 },
+  ];
+  // 시니어 라스: 테바 → 도제 → 수련생
+  const seniorLasPositions = [
+    { code: 'TEBA',    name: '테바',   fee1st: 1000000, fee2nd: 1000000 },
+    { code: 'DOJE',    name: '도제',   fee1st: 500000,  fee2nd: 500000  },
+    { code: 'TRAINEE', name: '수련생', fee1st: 0,       fee2nd: 0       },
   ];
 
-  for (const project of [mathDdi, seniorLas]) {
-    for (const pos of positionData) {
-      await prisma.position.upsert({
-        where: { projectId_code: { projectId: project.id, code: pos.code } },
-        update: { name: pos.name, fee1st: pos.fee1st, fee2nd: pos.fee2nd },
-        create: { projectId: project.id, ...pos },
-      });
-    }
+  for (const pos of mathDdiPositions) {
+    await prisma.position.upsert({
+      where: { projectId_code: { projectId: mathDdi.id, code: pos.code } },
+      update: { name: pos.name, fee1st: pos.fee1st, fee2nd: pos.fee2nd },
+      create: { projectId: mathDdi.id, ...pos },
+    });
+  }
+  for (const pos of seniorLasPositions) {
+    await prisma.position.upsert({
+      where: { projectId_code: { projectId: seniorLas.id, code: pos.code } },
+      update: { name: pos.name, fee1st: pos.fee1st, fee2nd: pos.fee2nd },
+      create: { projectId: seniorLas.id, ...pos },
+    });
   }
 
-  console.log('✅ Positions created for all projects');
+  console.log('✅ Positions created: 수학의 띠(매니저), 시니어 라스(테바/도제/수련생)');
+
 
   // ─────────────────────────────────────────────────
   // 3. 상품 (Products) 초기 데이터

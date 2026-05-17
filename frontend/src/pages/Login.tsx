@@ -18,7 +18,7 @@ export default function Login() {
     try {
       const { data } = await api.post('/auth/login', { employeeId, password });
       setAuth(data.user, data.access_token);
-      navigate(data.user.role === 'ADMIN' ? '/admin/dashboard' : '/dashboard');
+      navigate(data.user.role === 'ADMIN' ? '/admin/home' : '/dashboard');
     } catch (err: any) {
       setError(err.response?.data?.message || '로그인에 실패했습니다.');
     } finally {

@@ -3,8 +3,10 @@ import Login from './pages/Login';
 import DashboardLayout from './layouts/DashboardLayout';
 
 // Admin pages
+import AdminHome from './pages/admin/Home';
 import AdminDashboard from './pages/admin/Dashboard';
 import AdminUsers from './pages/admin/Users';
+import AdminRooms from './pages/admin/Rooms';
 import AdminSales from './pages/admin/Sales';
 import AdminAttendance from './pages/admin/Attendance';
 import AdminReports from './pages/admin/Reports';
@@ -31,6 +33,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/admin" element={<Navigate to="/admin/home" replace />} />
         <Route path="/login" element={<Login />} />
 
         {/* Admin Routes */}
@@ -41,8 +44,10 @@ function App() {
             </ProtectedRoute>
           }
         >
+          <Route path="/admin/home" element={<AdminHome />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/rooms" element={<AdminRooms />} />
           <Route path="/admin/sales" element={<AdminSales />} />
           <Route path="/admin/attendance" element={<AdminAttendance />} />
           <Route path="/admin/reports" element={<AdminReports />} />

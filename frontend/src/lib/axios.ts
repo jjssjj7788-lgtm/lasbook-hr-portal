@@ -8,11 +8,18 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  // zustand persist는 'lasbook-auth' 키로 저장함
+  const raw = localStorage.getItem('lasbook-auth');
+  if (raw) {
+    try {
+      const { state } = JSON.parse(raw);
+      if (state?.token) {
+        config.headers.Authorization = `Bearer ${state.token}`;
+      }
+    } catch {}
   }
   return config;
 });
+
 
 export default api;

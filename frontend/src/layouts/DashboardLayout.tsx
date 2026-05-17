@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import api from '../lib/axios';
 
 const ADMIN_NAV = [
+  { to: '/admin/home',                 icon: '🏠', label: '홈 (프로젝트 선택)' },
   { to: '/admin/dashboard',            icon: '📊', label: '대시보드' },
   { to: '/admin/users',                icon: '👥', label: '인사 관리' },
+  { to: '/admin/rooms',                icon: '💬', label: '팀(Room) 관리' },
   { to: '/admin/sales',                icon: '💰', label: '판매 실적' },
   { to: '/admin/attendance',           icon: '📋', label: '출석 관리' },
   { to: '/admin/reports',              icon: '📝', label: '활동 보고서' },

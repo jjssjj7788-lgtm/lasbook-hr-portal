@@ -14,6 +14,7 @@ const prisma_module_1 = require("./prisma/prisma.module");
 const auth_module_1 = require("./auth/auth.module");
 const users_module_1 = require("./users/users.module");
 const projects_module_1 = require("./projects/projects.module");
+const rooms_module_1 = require("./rooms/rooms.module");
 const attendance_module_1 = require("./attendance/attendance.module");
 const sales_module_1 = require("./sales/sales.module");
 const activity_reports_module_1 = require("./activity-reports/activity-reports.module");
@@ -29,6 +30,7 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             users_module_1.UsersModule,
             projects_module_1.ProjectsModule,
+            rooms_module_1.RoomsModule,
             attendance_module_1.AttendanceModule,
             sales_module_1.SalesModule,
             activity_reports_module_1.ActivityReportsModule,

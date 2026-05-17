@@ -5,6 +5,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ProjectsModule } from './projects/projects.module';
+import { RoomsModule } from './rooms/rooms.module';
 import { AttendanceModule } from './attendance/attendance.module';
 import { SalesModule } from './sales/sales.module';
 import { ActivityReportsModule } from './activity-reports/activity-reports.module';
@@ -16,7 +17,8 @@ import { MonthlyCommissionsModule } from './monthly-commissions/monthly-commissi
     PrismaModule,
     AuthModule,
     UsersModule,
-    ProjectsModule,       // Projects + Products + Positions
+    ProjectsModule,
+    RoomsModule,
     AttendanceModule,
     SalesModule,
     ActivityReportsModule,

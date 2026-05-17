@@ -20,11 +20,30 @@ model Project {
 
   positions        Position[]
   users            User[]
+  rooms            Room[]
   attendances      Attendance[]
   sales            Sale[]
   activityReports  ActivityReport[]
   activityFees     ActivityFee[]
   commissions      MonthlyCommission[]
+}
+
+// ─────────────────────────────────────────────────
+// 1-1. 팀(Room) - 카카오 단톡방 기반 팀 분류
+// ─────────────────────────────────────────────────
+model Room {
+  id          Int     @id @default(autoincrement())
+  projectId   Int
+  name        String  // 예: DDI Room#1, Senior Room#1
+  managerId   String? // 팀 보고서 제출 담당자 사원번호
+  isActive    Boolean @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  project  Project @relation(fields: [projectId], references: [id])
+  members  User[]
+
+  @@unique([projectId, name])
 }
 
 // ─────────────────────────────────────────────────
@@ -66,6 +85,7 @@ model User {
   employeeId        String    @id       // 사원번호 (예: LAS-001)
   projectId         Int
   positionId        Int
+  roomId            Int?                // 소속 팀(Room) ID
   password          String
   name              String
   parentEmployeeId  String?             // 상위 관리자 사번 (계층구조)
@@ -83,6 +103,7 @@ model User {
 
   project           Project   @relation(fields: [projectId], references: [id])
   position          Position  @relation(fields: [positionId], references: [id])
+  room              Room?     @relation(fields: [roomId], references: [id])
   parent            User?     @relation("UserHierarchy", fields: [parentEmployeeId], references: [employeeId])
   subordinates      User[]    @relation("UserHierarchy")
 
