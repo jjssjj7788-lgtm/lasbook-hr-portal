@@ -12,6 +12,7 @@ const ADMIN_NAV = [
   { to: '/admin/sales',                icon: '💰', label: '판매 실적' },
   { to: '/admin/attendance',           icon: '📋', label: '출석 관리' },
   { to: '/admin/reports',              icon: '📝', label: '활동 보고서' },
+  { to: '/admin/weekly-report',        icon: '📅', label: '주간 보고서' },
   { to: '/admin/activity-fees',        icon: '💵', label: '초기 활동비' },
   { to: '/admin/monthly-commissions',  icon: '🏆', label: '월간 성과급' },
   { to: '/admin/products',             icon: '📦', label: '상품 관리' },

@@ -41,7 +41,15 @@ let ActivityReportsService = class ActivityReportsService {
             if (filters?.employeeId)
                 where.employeeId = filters.employeeId;
         }
-        if (filters?.date) {
+        if (filters?.startDate && filters?.endDate) {
+            const s = new Date(filters.startDate);
+            const e = new Date(filters.endDate);
+            where.submittedAt = {
+                gte: new Date(s.getFullYear(), s.getMonth(), s.getDate(), 0, 0, 0),
+                lte: new Date(e.getFullYear(), e.getMonth(), e.getDate(), 23, 59, 59, 999),
+            };
+        }
+        else if (filters?.date) {
             const d = new Date(filters.date);
             const start = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0);
             const end = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 59, 999);

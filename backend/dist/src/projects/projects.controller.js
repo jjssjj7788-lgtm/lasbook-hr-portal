@@ -86,6 +86,11 @@ let ProductsController = class ProductsController {
             throw new Error('권한이 없습니다.');
         return this.productsService.update(Number(id), body);
     }
+    deactivateZeroPriced(req) {
+        if (req.user.role !== 'ADMIN')
+            throw new Error('권한이 없습니다.');
+        return this.productsService.deactivateZeroPriced();
+    }
     deactivate(id, req) {
         if (req.user.role !== 'ADMIN')
             throw new Error('권한이 없습니다.');
@@ -116,6 +121,13 @@ __decorate([
     __metadata("design:paramtypes", [String, Object, Object]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)('zero-price'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "deactivateZeroPriced", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),

@@ -136,7 +136,7 @@ export default function AdminSales() {
                 <select value={form.productId} onChange={(e) => handleProductChange(e.target.value)} required
                   className="w-full px-3 py-2 bg-slate-800 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
                   <option value="">선택</option>
-                  {products.map((p) => <option key={p.id} value={p.id}>{p.memberType} {p.series}시리즈 {p.language} ({fmt(p.price)})</option>)}
+                  {products.map((p) => <option key={p.id} value={p.id}>{p.memberType} {p.series}{p.step ? ` ${p.step}` : ''} {p.language !== '-' ? p.language : ''} ({fmt(p.price)})</option>)}
                 </select>
               </div>
               <div>
@@ -193,7 +193,7 @@ export default function AdminSales() {
                     <td className="px-4 py-3 text-sm text-slate-300">{format(new Date(s.saleDate), 'MM.dd')}</td>
                     <td className="px-4 py-3 text-sm text-white font-medium">{s.employee?.name}</td>
                     <td className="px-4 py-3 text-sm text-slate-300">{s.customerName}</td>
-                    <td className="px-4 py-3 text-xs text-slate-400">{s.product?.series}시리즈 {s.product?.language}</td>
+                    <td className="px-4 py-3 text-xs text-slate-400">{s.product?.memberType} {s.product?.series}{s.product?.step ? ` ${s.product.step}` : ''} {s.product?.language !== '-' ? s.product?.language : ''}</td>
                     <td className="px-4 py-3">
                       <span className={`text-xs px-2 py-0.5 rounded-full ${s.paymentMethod === 'CARD' ? 'bg-blue-500/20 text-blue-300' : 'bg-emerald-500/20 text-emerald-300'}`}>
                         {s.paymentMethod === 'CARD' ? '카드' : '현금'}

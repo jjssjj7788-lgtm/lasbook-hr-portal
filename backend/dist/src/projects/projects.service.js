@@ -36,6 +36,9 @@ let ProductsService = class ProductsService {
     create(data) { return this.prisma.product.create({ data }); }
     update(id, data) { return this.prisma.product.update({ where: { id }, data }); }
     deactivate(id) { return this.prisma.product.update({ where: { id }, data: { isActive: false } }); }
+    deactivateZeroPriced() {
+        return this.prisma.product.updateMany({ where: { price: 0, isActive: true }, data: { isActive: false } });
+    }
 };
 exports.ProductsService = ProductsService;
 exports.ProductsService = ProductsService = __decorate([

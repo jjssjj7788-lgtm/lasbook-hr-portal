@@ -27,7 +27,7 @@ export class ActivityReportsService {
   async findAll(
     requesterId: string,
     isAdmin: boolean,
-    filters?: { projectId?: number; employeeId?: string; month?: string; date?: string },
+    filters?: { projectId?: number; employeeId?: string; month?: string; date?: string; startDate?: string; endDate?: string },
   ) {
     const requester = await this.prisma.user.findUnique({ where: { employeeId: requesterId } });
     if (!requester) return [];
@@ -43,14 +43,20 @@ export class ActivityReportsService {
       if (filters?.employeeId) where.employeeId = filters.employeeId;
     }
 
-    // 날짜 필터 (date: yyyy-MM-dd 형식 — 하루치만 조회)
-    if (filters?.date) {
+    // 날짜 범위 필터 (startDate ~ endDate)
+    if (filters?.startDate && filters?.endDate) {
+      const s = new Date(filters.startDate);
+      const e = new Date(filters.endDate);
+      where.submittedAt = {
+        gte: new Date(s.getFullYear(), s.getMonth(), s.getDate(), 0, 0, 0),
+        lte: new Date(e.getFullYear(), e.getMonth(), e.getDate(), 23, 59, 59, 999),
+      };
+    } else if (filters?.date) {
       const d = new Date(filters.date);
       const start = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0);
       const end   = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 59, 999);
       where.submittedAt = { gte: start, lte: end };
     } else if (filters?.month) {
-      // 월별 필터 (하위호환)
       const [y, m] = filters.month.split('-').map(Number);
       where.submittedAt = { gte: new Date(y, m - 1, 1), lt: new Date(y, m, 1) };
     }

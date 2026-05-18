@@ -13,7 +13,9 @@ export class ActivityReportsController {
     @Query('projectId') projectId?: string,
     @Query('employeeId') employeeId?: string,
     @Query('month') month?: string,
-    @Query('date') date?: string,   // ← 날짜 필터 추가 (yyyy-MM-dd)
+    @Query('date') date?: string,
+    @Query('startDate') startDate?: string,
+    @Query('endDate') endDate?: string,
   ) {
     const isAdmin = req.user.role === 'ADMIN';
     return this.reportsService.findAll(req.user.employeeId, isAdmin, {
@@ -21,6 +23,8 @@ export class ActivityReportsController {
       employeeId,
       month,
       date,
+      startDate,
+      endDate,
     });
   }
 

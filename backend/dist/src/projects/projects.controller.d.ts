@@ -54,39 +54,40 @@ export declare class ProductsController {
     constructor(productsService: ProductsService);
     findAll(): import("@prisma/client").Prisma.PrismaPromise<{
         id: number;
+        isActive: boolean;
         memberType: string;
         series: string;
         step: string | null;
         language: string;
         price: number;
-        isActive: boolean;
     }[]>;
     create(body: any, req: any): import("@prisma/client").Prisma.Prisma__ProductClient<{
         id: number;
+        isActive: boolean;
         memberType: string;
         series: string;
         step: string | null;
         language: string;
         price: number;
-        isActive: boolean;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
     update(id: string, body: any, req: any): import("@prisma/client").Prisma.Prisma__ProductClient<{
         id: number;
+        isActive: boolean;
         memberType: string;
         series: string;
         step: string | null;
         language: string;
         price: number;
-        isActive: boolean;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
+    deactivateZeroPriced(req: any): import("@prisma/client").Prisma.PrismaPromise<import("@prisma/client").Prisma.BatchPayload>;
     deactivate(id: string, req: any): import("@prisma/client").Prisma.Prisma__ProductClient<{
         id: number;
+        isActive: boolean;
         memberType: string;
         series: string;
         step: string | null;
         language: string;
         price: number;
-        isActive: boolean;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
 }
 export declare class PositionsController {

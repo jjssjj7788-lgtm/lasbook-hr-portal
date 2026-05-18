@@ -17,6 +17,9 @@ export class ProductsService {
   create(data: { memberType: string; series: string; step?: string; language: string; price: number }) { return this.prisma.product.create({ data }); }
   update(id: number, data: any) { return this.prisma.product.update({ where: { id }, data }); }
   deactivate(id: number) { return this.prisma.product.update({ where: { id }, data: { isActive: false } }); }
+  deactivateZeroPriced() {
+    return this.prisma.product.updateMany({ where: { price: 0, isActive: true }, data: { isActive: false } });
+  }
 }
 
 @Injectable()

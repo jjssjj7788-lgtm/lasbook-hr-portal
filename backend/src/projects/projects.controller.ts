@@ -31,6 +31,10 @@ export class ProductsController {
     if (req.user.role !== 'ADMIN') throw new Error('권한이 없습니다.');
     return this.productsService.update(Number(id), body);
   }
+  @Delete('zero-price') deactivateZeroPriced(@Request() req: any) {
+    if (req.user.role !== 'ADMIN') throw new Error('권한이 없습니다.');
+    return this.productsService.deactivateZeroPriced();
+  }
   @Delete(':id') deactivate(@Param('id') id: string, @Request() req: any) {
     if (req.user.role !== 'ADMIN') throw new Error('권한이 없습니다.');
     return this.productsService.deactivate(Number(id));

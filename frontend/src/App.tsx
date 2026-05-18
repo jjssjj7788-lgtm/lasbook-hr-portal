@@ -11,6 +11,7 @@ import AdminRooms from './pages/admin/Rooms';
 import AdminSales from './pages/admin/Sales';
 import AdminAttendance from './pages/admin/Attendance';
 import AdminReports from './pages/admin/Reports';
+import AdminWeeklyReport from './pages/admin/WeeklyReport';
 import AdminActivityFees from './pages/admin/ActivityFees';
 import AdminMonthlyCommissions from './pages/admin/MonthlyCommissions';
 import AdminProducts from './pages/admin/Products';
@@ -54,6 +55,7 @@ function App() {
           <Route path="/admin/sales" element={<AdminSales />} />
           <Route path="/admin/attendance" element={<AdminAttendance />} />
           <Route path="/admin/reports" element={<AdminReports />} />
+          <Route path="/admin/weekly-report" element={<AdminWeeklyReport />} />
           <Route path="/admin/activity-fees" element={<AdminActivityFees />} />
           <Route path="/admin/monthly-commissions" element={<AdminMonthlyCommissions />} />
           <Route path="/admin/products" element={<AdminProducts />} />

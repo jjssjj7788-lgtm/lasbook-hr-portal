@@ -21,13 +21,15 @@ let ActivityReportsController = class ActivityReportsController {
     constructor(reportsService) {
         this.reportsService = reportsService;
     }
-    findAll(req, projectId, employeeId, month, date) {
+    findAll(req, projectId, employeeId, month, date, startDate, endDate) {
         const isAdmin = req.user.role === 'ADMIN';
         return this.reportsService.findAll(req.user.employeeId, isAdmin, {
             projectId: projectId ? Number(projectId) : undefined,
             employeeId,
             month,
             date,
+            startDate,
+            endDate,
         });
     }
     findOne(id, req) {
@@ -65,8 +67,10 @@ __decorate([
     __param(2, (0, common_1.Query)('employeeId')),
     __param(3, (0, common_1.Query)('month')),
     __param(4, (0, common_1.Query)('date')),
+    __param(5, (0, common_1.Query)('startDate')),
+    __param(6, (0, common_1.Query)('endDate')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String, String, String, String]),
+    __metadata("design:paramtypes", [Object, String, String, String, String, String, String]),
     __metadata("design:returntype", void 0)
 ], ActivityReportsController.prototype, "findAll", null);
 __decorate([
