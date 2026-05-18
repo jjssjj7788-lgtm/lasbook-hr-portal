@@ -2,7 +2,7 @@ import { AttendanceService } from './attendance.service';
 export declare class AttendanceController {
     private readonly attendanceService;
     constructor(attendanceService: AttendanceService);
-    findAll(req: any, projectId?: string, traineeId?: string, month?: string): Promise<({
+    findAll(req: any, projectId?: string, traineeId?: string, month?: string, date?: string): Promise<({
         project: {
             name: string;
         };

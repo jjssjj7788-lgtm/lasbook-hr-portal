@@ -169,10 +169,14 @@ model ActivityReport {
   projectId        Int
   submittedAt      DateTime @default(now())
   employeeId       String
-  prospectCount    Int      @default(0)  // 만난 가망고객 수
-  counselContent   String?              // 주요 상담 내용
-  specialNotes     String?              // 특이사항
-  adminEvaluation  String?              // O, △, X — USER 화면에서 완전 은닉
+  prospectCount    Int      @default(0) // 만난 가망고객 수
+  customerName     String?  // 상담 고객 이름
+  customerPhone    String?  // 연락처
+  childAge         String?  // 자녀 나이
+  counselContent   String?  // 상담 내용
+  customerReaction String?  // 고객 반응
+  specialNotes     String?  // 특이사항
+  adminEvaluation  String?  // O, △, X — USER 화면에서 완전 은닉
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 

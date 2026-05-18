@@ -26,6 +26,11 @@ export class ActivityFeesController {
     return this.activityFeesService.getPayoutList(Number(projectId), month);
   }
 
+
+  @Get('check-eligibility')
+  checkEligibility(@Query('projectId') projectId: string) {
+    return this.activityFeesService.checkEligibility2nd(Number(projectId));
+  }
   @Post()
   create(@Body() body: { employeeId: string; projectId: number; payMonth: string; paymentRound: 1 | 2; isEligible?: boolean }) {
     return this.activityFeesService.createFee(body);

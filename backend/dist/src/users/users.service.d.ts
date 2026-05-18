@@ -27,6 +27,7 @@ export declare class UsersService {
         isActive: boolean;
         employeeId: string;
         positionId: number;
+        roomId: number | null;
         password: string;
         parentEmployeeId: string | null;
         contractStart: Date;
@@ -67,6 +68,7 @@ export declare class UsersService {
         isActive: boolean;
         employeeId: string;
         positionId: number;
+        roomId: number | null;
         password: string;
         parentEmployeeId: string | null;
         contractStart: Date;
@@ -112,8 +114,12 @@ export declare class UsersService {
             projectId: number;
             employeeId: string;
             submittedAt: Date;
+            customerName: string | null;
             prospectCount: number;
+            customerPhone: string | null;
+            childAge: string | null;
             counselContent: string | null;
+            customerReaction: string | null;
             specialNotes: string | null;
             adminEvaluation: string | null;
         }[];
@@ -187,6 +193,7 @@ export declare class UsersService {
             isActive: boolean;
             employeeId: string;
             positionId: number;
+            roomId: number | null;
             password: string;
             parentEmployeeId: string | null;
             contractStart: Date;
@@ -224,6 +231,7 @@ export declare class UsersService {
         isActive: boolean;
         employeeId: string;
         positionId: number;
+        roomId: number | null;
         password: string;
         parentEmployeeId: string | null;
         contractStart: Date;
@@ -275,6 +283,7 @@ export declare class UsersService {
         isActive: boolean;
         employeeId: string;
         positionId: number;
+        roomId: number | null;
         password: string;
         parentEmployeeId: string | null;
         contractStart: Date;
@@ -324,6 +333,7 @@ export declare class UsersService {
         isActive: boolean;
         employeeId: string;
         positionId: number;
+        roomId: number | null;
         password: string;
         parentEmployeeId: string | null;
         contractStart: Date;
@@ -343,6 +353,7 @@ export declare class UsersService {
         isActive: boolean;
         employeeId: string;
         positionId: number;
+        roomId: number | null;
         password: string;
         parentEmployeeId: string | null;
         contractStart: Date;
@@ -362,6 +373,7 @@ export declare class UsersService {
         isActive: boolean;
         employeeId: string;
         positionId: number;
+        roomId: number | null;
         password: string;
         parentEmployeeId: string | null;
         contractStart: Date;

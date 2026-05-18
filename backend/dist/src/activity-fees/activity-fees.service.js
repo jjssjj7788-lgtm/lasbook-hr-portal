@@ -107,6 +107,37 @@ let ActivityFeesService = class ActivityFeesService {
             data: { isEligible, netAmount },
         });
     }
+    async checkEligibility2nd(projectId) {
+        const users = await this.prisma.user.findMany({
+            where: { projectId, isActive: true, position: { code: { not: 'TRAINEE' } } },
+            include: {
+                position: true,
+                sales: { where: { projectId } },
+                activityReports: { where: { projectId } },
+            },
+        });
+        return users.map((u) => {
+            const hasSale = u.sales.length > 0;
+            const saleCount = u.sales.length;
+            const circleReports = u.activityReports.filter((r) => r.adminEvaluation === '\u25cb');
+            const hasCircle = circleReports.length > 0;
+            const eligible2nd = hasSale && hasCircle;
+            return {
+                employeeId: u.employeeId,
+                name: u.name,
+                position: u.position?.name,
+                contractStart: u.contractStart,
+                eligible1st: true,
+                eligible2nd,
+                conditions: {
+                    hasSale,
+                    saleCount,
+                    hasCircle,
+                    circleCount: circleReports.length,
+                },
+            };
+        });
+    }
     async getPayoutList(projectId, month) {
         const fees = await this.prisma.activityFee.findMany({
             where: { projectId, payMonth: month, paymentStatus: 'PENDING', isEligible: true, grossAmount: { gt: 0 } },

@@ -1,20 +1,19 @@
 import { useEffect, useState } from 'react';
 import api from '../../lib/axios';
-import { format } from 'date-fns';
 
 function fmt(n: number) { return `${n.toLocaleString('ko-KR')}원`; }
 
 export default function AdminProducts() {
   const [products, setProducts] = useState<any[]>([]);
   const [showForm, setShowForm] = useState(false);
-  const [form, setForm] = useState({ memberType: '구독회원', series: 'K', step: '', language: '한글', price: '' });
+  const [form, setForm] = useState({ memberType: '구독회원', series: 'K2', step: 'A', language: '한글', price: '' });
 
   const load = () => api.get('/products').then((r) => setProducts(r.data));
   useEffect(() => { load(); }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await api.post('/products', { ...form, price: Number(form.price) });
+    await api.post('/products', { ...form, step: form.step || null, price: Number(form.price) });
     setShowForm(false);
     load();
   };
@@ -34,11 +33,12 @@ export default function AdminProducts() {
 
       {showForm && (
         <form onSubmit={handleSubmit} className="bg-slate-900 border border-white/10 rounded-2xl p-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
             {[
-              { label: '회원종류', key: 'memberType', type: 'select', opts: ['구독회원','구매회원','주인형 점주'] },
-              { label: '시리즈', key: 'series', placeholder: 'K, S, G' },
-              { label: '언어', key: 'language', type: 'select', opts: ['한글','영어','-'] },
+              { label: '회원종류', key: 'memberType', type: 'select', opts: ['구독회원', '구매회원', '주인형 점주'] },
+              { label: '시리즈', key: 'series', placeholder: 'K2, S, G, -' },
+              { label: '분권(A/B)', key: 'step', placeholder: 'A 또는 B (없으면 빈칸)' },
+              { label: '언어', key: 'language', type: 'select', opts: ['한글', '영어', '-'] },
               { label: '정가(원)', key: 'price', inputType: 'number' },
             ].map((f) => (
               <div key={f.key}>
@@ -62,13 +62,19 @@ export default function AdminProducts() {
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {products.map((p) => (
-          <div key={p.id} className="bg-slate-900 border border-white/5 rounded-2xl p-5 hover:border-white/10 transition-all">
-            <div className="text-xs text-indigo-400 font-semibold mb-1">{p.memberType}</div>
-            <div className="text-white font-bold text-lg">{p.series}시리즈 {p.language !== '-' ? p.language : ''}</div>
-            <div className="text-2xl font-bold text-white mt-3">{fmt(p.price)}</div>
-          </div>
-        ))}
+        {products.filter((p) => p.isActive !== false).map((p) => {
+          const isMaster = p.series === '-';
+          const seriesLabel = isMaster ? '주인형 점주' : `${p.series}시리즈`;
+          const stepLabel = p.step ? ` ${p.step}권 (48권)` : '';
+          const langLabel = p.language !== '-' ? ` · ${p.language}` : '';
+          return (
+            <div key={p.id} className="bg-slate-900 border border-white/5 rounded-2xl p-5 hover:border-indigo-500/30 transition-all">
+              <div className="text-xs text-indigo-400 font-semibold mb-1">{p.memberType}</div>
+              <div className="text-white font-bold text-lg">{seriesLabel}{stepLabel}{langLabel}</div>
+              <div className="text-2xl font-bold text-white mt-3">{fmt(p.price)}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ export class AttendanceService {
     educationDate: Date;
     branchName: string;
     traineeId: string;
-    mentorId: string;
+    mentorId?: string | null;
     isPresent: boolean;
     notes?: string;
   }) {
@@ -23,9 +23,11 @@ export class AttendanceService {
     const branchLabel = `${data.branchName}_${dateStr}`;
     // 출석 시 교통비 자동 발생
     const transportFee = data.isPresent ? TRANSPORT_FEE : 0;
+    // mentorId 미입력 시 traineeId를 대신 사용
+    const mentorId = data.mentorId || data.traineeId;
 
     return this.prisma.attendance.create({
-      data: { ...data, branchLabel, transportFee },
+      data: { ...data, mentorId, branchLabel, transportFee },
       include: {
         trainee: { select: { name: true, position: true } },
         mentor: { select: { name: true } },
@@ -54,7 +56,7 @@ export class AttendanceService {
     });
   }
 
-  async findAll(requesterId: string, isAdmin: boolean, filters?: { projectId?: number; traineeId?: string; month?: string }) {
+  async findAll(requesterId: string, isAdmin: boolean, filters?: { projectId?: number; traineeId?: string; month?: string; date?: string }) {
     const requester = await this.prisma.user.findUnique({ where: { employeeId: requesterId } });
     if (!requester) return [];
 
@@ -71,6 +73,11 @@ export class AttendanceService {
     if (filters?.month) {
       const [y, m] = filters.month.split('-').map(Number);
       where.educationDate = { gte: new Date(y, m - 1, 1), lt: new Date(y, m, 1) };
+    }
+    if (filters?.date) {
+      const d = new Date(filters.date + 'T00:00:00');
+      const next = new Date(d); next.setDate(next.getDate() + 1);
+      where.educationDate = { gte: d, lt: next };
     }
 
     return this.prisma.attendance.findMany({

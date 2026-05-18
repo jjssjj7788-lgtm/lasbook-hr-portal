@@ -48,11 +48,20 @@ let RoomsService = class RoomsService {
         return this.prisma.room.delete({ where: { id } });
     }
     async addMember(roomId, employeeId) {
-        return this.prisma.user.update({
+        const user = await this.prisma.user.findUnique({
             where: { employeeId },
-            data: { roomId },
-            include: { position: true, room: true },
+            include: { position: true },
         });
+        const allEmployeeIds = await this.collectSubordinateIds(employeeId);
+        await this.prisma.user.updateMany({
+            where: { employeeId: { in: allEmployeeIds } },
+            data: { roomId },
+        });
+        return {
+            addedCount: allEmployeeIds.length,
+            employeeIds: allEmployeeIds,
+            rootUser: user,
+        };
     }
     async removeMember(employeeId) {
         return this.prisma.user.update({
@@ -60,6 +69,26 @@ let RoomsService = class RoomsService {
             data: { roomId: null },
             include: { position: true },
         });
+    }
+    async removeMemberWithSubordinates(employeeId) {
+        const allIds = await this.collectSubordinateIds(employeeId);
+        await this.prisma.user.updateMany({
+            where: { employeeId: { in: allIds } },
+            data: { roomId: null },
+        });
+        return { removedCount: allIds.length, employeeIds: allIds };
+    }
+    async collectSubordinateIds(employeeId) {
+        const result = [employeeId];
+        const subordinates = await this.prisma.user.findMany({
+            where: { parentEmployeeId: employeeId },
+            select: { employeeId: true },
+        });
+        for (const sub of subordinates) {
+            const childIds = await this.collectSubordinateIds(sub.employeeId);
+            result.push(...childIds);
+        }
+        return result;
     }
 };
 exports.RoomsService = RoomsService;

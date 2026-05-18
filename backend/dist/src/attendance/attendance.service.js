@@ -24,8 +24,9 @@ let AttendanceService = class AttendanceService {
         const dateStr = (0, date_fns_1.format)(data.educationDate, 'yyyyMMdd');
         const branchLabel = `${data.branchName}_${dateStr}`;
         const transportFee = data.isPresent ? TRANSPORT_FEE : 0;
+        const mentorId = data.mentorId || data.traineeId;
         return this.prisma.attendance.create({
-            data: { ...data, branchLabel, transportFee },
+            data: { ...data, mentorId, branchLabel, transportFee },
             include: {
                 trainee: { select: { name: true, position: true } },
                 mentor: { select: { name: true } },
@@ -68,6 +69,12 @@ let AttendanceService = class AttendanceService {
         if (filters?.month) {
             const [y, m] = filters.month.split('-').map(Number);
             where.educationDate = { gte: new Date(y, m - 1, 1), lt: new Date(y, m, 1) };
+        }
+        if (filters?.date) {
+            const d = new Date(filters.date + 'T00:00:00');
+            const next = new Date(d);
+            next.setDate(next.getDate() + 1);
+            where.educationDate = { gte: d, lt: next };
         }
         return this.prisma.attendance.findMany({
             where,

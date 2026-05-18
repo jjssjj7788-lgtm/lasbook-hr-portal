@@ -22,7 +22,7 @@ function Badge({ code }: { code: string }) {
 function fmt(n: number) { return `${n.toLocaleString('ko-KR')}원`; }
 
 // ─── 직원 생성/수정 모달 ───────────────────────────────────────
-function UserModal({ user, positions, projects, onClose, onSave }: any) {
+function UserModal({ user, positions, projects, allUsers, onClose, onSave }: any) {
   const [form, setForm] = useState(
     user
       ? { ...user, contractStart: user.contractStart?.split('T')[0] ?? '', roomId: user.roomId ?? '' }
@@ -63,17 +63,27 @@ function UserModal({ user, positions, projects, onClose, onSave }: any) {
     if (!form.name.trim()) { setError('이름을 입력해 주세요.'); setLoading(false); return; }
 
     try {
-      const payload = {
-        ...form,
+      // 필요한 스칼라 필드만 명시적으로 추출 (중첩 객체 제외)
+      const base = {
+        name: form.name,
         projectId: Number(form.projectId),
         positionId: Number(form.positionId),
         roomId: form.roomId ? Number(form.roomId) : null,
         parentEmployeeId: form.parentEmployeeId || null,
+        contractStart: form.contractStart,
+        isStoreOwner: Boolean(form.isStoreOwner),
+        phone: form.phone || null,
+        bank: form.bank || null,
+        accountNumber: form.accountNumber || null,
+        accountHolder: form.accountHolder || null,
+        role: form.role || 'USER',
+        notes: form.notes || null,
+        isActive: form.isActive !== false,
       };
       if (user) {
-        await api.put(`/users/${user.employeeId}`, payload);
+        await api.put(`/users/${user.employeeId}`, base);
       } else {
-        await api.post('/users', payload);
+        await api.post('/users', { ...base, employeeId: form.employeeId, password: form.password });
       }
       onSave();
     } catch (err: any) {
@@ -139,7 +149,21 @@ function UserModal({ user, positions, projects, onClose, onSave }: any) {
 
           <div className="grid grid-cols-2 gap-4">
             <InputField label="계약 시작일 *" type="date" value={form.contractStart} onChange={(v: string) => setForm({ ...form, contractStart: v })} required />
-            <InputField label="상위 관리자 사번" value={form.parentEmployeeId ?? ''} onChange={(v: string) => setForm({ ...form, parentEmployeeId: v })} placeholder="예: ADMIN-001" />
+            <div>
+              <label className="block text-xs text-slate-400 mb-1.5 font-medium">상위 관리자</label>
+              <select
+                value={form.parentEmployeeId ?? ''}
+                onChange={(e) => setForm({ ...form, parentEmployeeId: e.target.value || null })}
+                className="w-full px-3 py-2.5 bg-slate-800 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                <option value="">(없음 — 최상위)</option>
+                {(allUsers ?? []).filter((u: any) => u.employeeId !== user?.employeeId).map((u: any) => (
+                  <option key={u.employeeId} value={u.employeeId}>
+                    {u.name} ({u.employeeId}) — {u.position?.name ?? ''}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
           <InputField label="연락처" value={form.phone ?? ''} onChange={(v: string) => setForm({ ...form, phone: v })} placeholder="010-0000-0000" />
@@ -550,6 +574,7 @@ export default function AdminUsers() {
           user={editUser}
           positions={positions}
           projects={projects}
+          allUsers={users}
           onClose={() => { setShowModal(false); setEditUser(null); }}
           onSave={() => { setShowModal(false); setEditUser(null); load(); }}
         />

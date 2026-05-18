@@ -20,7 +20,9 @@ let ActivityReportsService = class ActivityReportsService {
     async create(data) {
         return this.prisma.activityReport.create({
             data,
-            include: { employee: { select: { name: true, position: true } } },
+            include: {
+                employee: { select: { name: true, position: true, room: true } },
+            },
         });
     }
     async findAll(requesterId, isAdmin, filters) {
@@ -39,14 +41,30 @@ let ActivityReportsService = class ActivityReportsService {
             if (filters?.employeeId)
                 where.employeeId = filters.employeeId;
         }
-        if (filters?.month) {
+        if (filters?.date) {
+            const d = new Date(filters.date);
+            const start = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0);
+            const end = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 59, 999);
+            where.submittedAt = { gte: start, lte: end };
+        }
+        else if (filters?.month) {
             const [y, m] = filters.month.split('-').map(Number);
             where.submittedAt = { gte: new Date(y, m - 1, 1), lt: new Date(y, m, 1) };
         }
         const reports = await this.prisma.activityReport.findMany({
             where,
-            include: { employee: { select: { name: true, position: true } }, project: { select: { name: true } } },
-            orderBy: { submittedAt: 'desc' },
+            include: {
+                employee: {
+                    select: {
+                        name: true,
+                        employeeId: true,
+                        position: true,
+                        room: { select: { id: true, name: true } },
+                    },
+                },
+                project: { select: { name: true } },
+            },
+            orderBy: [{ employeeId: 'asc' }, { submittedAt: 'asc' }],
         });
         if (!isAdmin) {
             return reports.map(({ adminEvaluation, ...rest }) => rest);
@@ -56,7 +74,7 @@ let ActivityReportsService = class ActivityReportsService {
     async findOne(id, requesterId, isAdmin) {
         const report = await this.prisma.activityReport.findUnique({
             where: { id },
-            include: { employee: { select: { name: true, position: true } } },
+            include: { employee: { select: { name: true, position: true, room: true } } },
         });
         if (!report)
             throw new common_1.ForbiddenException('보고서를 찾을 수 없습니다.');

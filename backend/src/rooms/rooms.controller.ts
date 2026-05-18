@@ -30,15 +30,24 @@ export class RoomsController {
     return this.roomsService.remove(Number(id));
   }
 
+  // 멤버 추가 (테바 추가 시 하위 직원 전체 자동 포함)
   @Patch(':id/members/:employeeId')
   addMember(@Param('id') id: string, @Param('employeeId') employeeId: string, @Request() req: any) {
     if (req.user.role !== 'ADMIN') throw new Error('권한이 없습니다.');
     return this.roomsService.addMember(Number(id), employeeId);
   }
 
+  // 멤버 개별 제거
   @Delete(':id/members/:employeeId')
   removeMember(@Param('id') id: string, @Param('employeeId') employeeId: string, @Request() req: any) {
     if (req.user.role !== 'ADMIN') throw new Error('권한이 없습니다.');
     return this.roomsService.removeMember(employeeId);
+  }
+
+  // 멤버 + 하위 직원 전체 제거
+  @Delete(':id/members/:employeeId/cascade')
+  removeMemberCascade(@Param('id') id: string, @Param('employeeId') employeeId: string, @Request() req: any) {
+    if (req.user.role !== 'ADMIN') throw new Error('권한이 없습니다.');
+    return this.roomsService.removeMemberWithSubordinates(employeeId);
   }
 }

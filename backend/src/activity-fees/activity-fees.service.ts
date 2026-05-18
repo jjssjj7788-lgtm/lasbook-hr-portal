@@ -113,6 +113,54 @@ export class ActivityFeesService {
     });
   }
 
+  /**
+   * 2차 지급 조건 자동 확인
+   * 조건1: 판매실적(주인형 점주 OR 구독회원) 1건 이상
+   * 조건2: 일일활동보고서 adminEvaluation = '\u25cb'(○) 1개 이상
+   */
+  async checkEligibility2nd(projectId: number) {
+    // TRAINEE 제외한 전체 직원
+    const users = await this.prisma.user.findMany({
+      where: { projectId, isActive: true, position: { code: { not: 'TRAINEE' } } },
+      include: {
+        position: true,
+        sales: { where: { projectId } },
+        activityReports: { where: { projectId } },
+      },
+    });
+
+    return users.map((u) => {
+      // 조건1: 판매 실적
+      const hasSale = u.sales.length > 0;
+      const saleCount = u.sales.length;
+
+      // 조건2: 일일활동보고서 동그라미(○) 평가
+      const circleReports = u.activityReports.filter(
+        (r: any) => r.adminEvaluation === '\u25cb',
+      );
+      const hasCircle = circleReports.length > 0;
+
+      const eligible2nd = hasSale && hasCircle;
+
+      return {
+        employeeId: u.employeeId,
+        name: u.name,
+        position: u.position?.name,
+        contractStart: u.contractStart,
+        // 1차: 계약 시작일 기준 선지급 (항상 충족)
+        eligible1st: true,
+        // 2차 조건
+        eligible2nd,
+        conditions: {
+          hasSale,
+          saleCount,
+          hasCircle,
+          circleCount: circleReports.length,
+        },
+      };
+    });
+  }
+
   async getPayoutList(projectId: number, month: string) {
     const fees = await this.prisma.activityFee.findMany({
       where: { projectId, payMonth: month, paymentStatus: 'PENDING', isEligible: true, grossAmount: { gt: 0 } },

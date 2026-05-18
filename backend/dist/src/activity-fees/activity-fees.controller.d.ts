@@ -58,6 +58,20 @@ export declare class ActivityFeesController {
             paidAt: Date | null;
         })[];
     }>;
+    checkEligibility(projectId: string): Promise<{
+        employeeId: string;
+        name: string;
+        position: string;
+        contractStart: Date;
+        eligible1st: boolean;
+        eligible2nd: boolean;
+        conditions: {
+            hasSale: boolean;
+            saleCount: number;
+            hasCircle: boolean;
+            circleCount: number;
+        };
+    }[]>;
     create(body: {
         employeeId: string;
         projectId: number;

@@ -31,6 +31,9 @@ let ActivityFeesController = class ActivityFeesController {
     getPayoutList(projectId, month) {
         return this.activityFeesService.getPayoutList(Number(projectId), month);
     }
+    checkEligibility(projectId) {
+        return this.activityFeesService.checkEligibility2nd(Number(projectId));
+    }
     create(body) {
         return this.activityFeesService.createFee(body);
     }
@@ -69,6 +72,13 @@ __decorate([
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], ActivityFeesController.prototype, "getPayoutList", null);
+__decorate([
+    (0, common_1.Get)('check-eligibility'),
+    __param(0, (0, common_1.Query)('projectId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ActivityFeesController.prototype, "checkEligibility", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),

@@ -49,6 +49,11 @@ let RoomsController = class RoomsController {
             throw new Error('권한이 없습니다.');
         return this.roomsService.removeMember(employeeId);
     }
+    removeMemberCascade(id, employeeId, req) {
+        if (req.user.role !== 'ADMIN')
+            throw new Error('권한이 없습니다.');
+        return this.roomsService.removeMemberWithSubordinates(employeeId);
+    }
 };
 exports.RoomsController = RoomsController;
 __decorate([
@@ -101,6 +106,15 @@ __decorate([
     __metadata("design:paramtypes", [String, String, Object]),
     __metadata("design:returntype", void 0)
 ], RoomsController.prototype, "removeMember", null);
+__decorate([
+    (0, common_1.Delete)(':id/members/:employeeId/cascade'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Param)('employeeId')),
+    __param(2, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, Object]),
+    __metadata("design:returntype", void 0)
+], RoomsController.prototype, "removeMemberCascade", null);
 exports.RoomsController = RoomsController = __decorate([
     (0, common_1.Controller)('rooms'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

@@ -133,6 +133,20 @@ export declare class ActivityFeesService {
         paymentStatus: string;
         paidAt: Date | null;
     }>;
+    checkEligibility2nd(projectId: number): Promise<{
+        employeeId: string;
+        name: string;
+        position: string;
+        contractStart: Date;
+        eligible1st: boolean;
+        eligible2nd: boolean;
+        conditions: {
+            hasSale: boolean;
+            saleCount: number;
+            hasCircle: boolean;
+            circleCount: number;
+        };
+    }[]>;
     getPayoutList(projectId: number, month: string): Promise<{
         lines: string[];
         fees: ({

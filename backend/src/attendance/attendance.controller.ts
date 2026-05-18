@@ -13,11 +13,13 @@ export class AttendanceController {
     @Query('projectId') projectId?: string,
     @Query('traineeId') traineeId?: string,
     @Query('month') month?: string,
+    @Query('date') date?: string,
   ) {
     return this.attendanceService.findAll(req.user.employeeId, req.user.role === 'ADMIN', {
       projectId: projectId ? Number(projectId) : undefined,
       traineeId,
       month,
+      date,
     });
   }
 

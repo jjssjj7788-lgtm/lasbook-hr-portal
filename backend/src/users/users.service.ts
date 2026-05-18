@@ -21,7 +21,12 @@ export class UsersService {
     if (requester.role === 'ADMIN') {
       return this.prisma.user.findMany({
         where: projectId ? { projectId } : {},
-        include: { position: true, project: true, parent: { select: { name: true, employeeId: true } } },
+        include: {
+          position: true,
+          project: true,
+          room: { select: { id: true, name: true } },
+          parent: { select: { name: true, employeeId: true } },
+        },
         orderBy: { createdAt: 'asc' },
       });
     }

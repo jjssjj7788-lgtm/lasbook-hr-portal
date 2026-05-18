@@ -21,11 +21,12 @@ let AttendanceController = class AttendanceController {
     constructor(attendanceService) {
         this.attendanceService = attendanceService;
     }
-    findAll(req, projectId, traineeId, month) {
+    findAll(req, projectId, traineeId, month, date) {
         return this.attendanceService.findAll(req.user.employeeId, req.user.role === 'ADMIN', {
             projectId: projectId ? Number(projectId) : undefined,
             traineeId,
             month,
+            date,
         });
     }
     getTransportSummary(projectId, month) {
@@ -60,8 +61,9 @@ __decorate([
     __param(1, (0, common_1.Query)('projectId')),
     __param(2, (0, common_1.Query)('traineeId')),
     __param(3, (0, common_1.Query)('month')),
+    __param(4, (0, common_1.Query)('date')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String, String, String]),
+    __metadata("design:paramtypes", [Object, String, String, String, String]),
     __metadata("design:returntype", void 0)
 ], AttendanceController.prototype, "findAll", null);
 __decorate([

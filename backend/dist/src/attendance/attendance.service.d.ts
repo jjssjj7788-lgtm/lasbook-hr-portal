@@ -7,7 +7,7 @@ export declare class AttendanceService {
         educationDate: Date;
         branchName: string;
         traineeId: string;
-        mentorId: string;
+        mentorId?: string | null;
         isPresent: boolean;
         notes?: string;
     }): Promise<{
@@ -77,6 +77,7 @@ export declare class AttendanceService {
         projectId?: number;
         traineeId?: string;
         month?: string;
+        date?: string;
     }): Promise<({
         project: {
             name: string;

@@ -2,89 +2,306 @@ import { useEffect, useState } from 'react';
 import { useAuthStore } from '../../store/authStore';
 import api from '../../lib/axios';
 import { format } from 'date-fns';
+import { ko } from 'date-fns/locale';
+
+const REACTION_OPTIONS = ['관심있음 👍', '재방문 예정 📅', '보류 🤔', '거절 ❌', '계약 완료 ✅'];
+
+const EMPTY_FORM = {
+  customerName: '',
+  customerPhone: '',
+  childAge: '',
+  counselContent: '',
+  customerReaction: '',
+  specialNotes: '',
+};
 
 export default function StaffReports() {
   const { user } = useAuthStore();
   const [reports, setReports] = useState<any[]>([]);
-  const [form, setForm] = useState({ prospectCount: '', counselContent: '', specialNotes: '' });
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [error, setError] = useState('');
+  const today = format(new Date(), 'yyyy-MM-dd');
+  const [form, setForm] = useState({ ...EMPTY_FORM });
 
-  const load = () => {
-    if (user) api.get(`/activity-reports?employeeId=${user.employeeId}`).then((r) => setReports(r.data));
+  const load = async () => {
+    if (!user) return;
+    const res = await api.get(`/activity-reports?employeeId=${user.employeeId}`);
+    setReports(res.data);
   };
+
   useEffect(() => { load(); }, [user]);
+
+  const resetForm = () => { setForm({ ...EMPTY_FORM }); setError(''); };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.customerName.trim()) { setError('고객 이름을 입력해 주세요.'); return; }
     setLoading(true);
+    setError('');
     try {
       await api.post('/activity-reports', {
         projectId: user?.projectId,
-        prospectCount: Number(form.prospectCount),
+        prospectCount: 1,  // 1건 = 고객 1명
+        customerName: form.customerName,
+        customerPhone: form.customerPhone,
+        childAge: form.childAge,
         counselContent: form.counselContent,
+        customerReaction: form.customerReaction,
         specialNotes: form.specialNotes,
       });
-      setForm({ prospectCount: '', counselContent: '', specialNotes: '' });
+      resetForm();
       setShowForm(false);
       load();
+    } catch (err: any) {
+      setError(err.response?.data?.message || '제출 실패');
     } finally {
       setLoading(false);
     }
   };
 
+  // 오늘 제출한 건수
+  const todayReports = reports.filter((r) => r.submittedAt?.startsWith(today));
+
   return (
-    <div className="p-6 space-y-6 max-w-3xl mx-auto">
+    <div className="p-6 space-y-6 max-w-2xl mx-auto">
+      {/* 헤더 */}
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-white">일일 활동 보고서</h1>
-        <button onClick={() => setShowForm(!showForm)}
-          className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-sm font-medium transition-all">
-          {showForm ? '취소' : '+ 보고서 작성'}
+        <div>
+          <h1 className="text-2xl font-bold text-white">📝 일일 활동 보고서</h1>
+          <p className="text-slate-400 text-sm mt-1">{format(new Date(), 'yyyy년 MM월 dd일 (EEE)', { locale: ko })}</p>
+        </div>
+        <button
+          onClick={() => { setShowForm(!showForm); resetForm(); }}
+          className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
+            showForm
+              ? 'bg-slate-700 text-slate-300'
+              : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/20'
+          }`}
+        >
+          {showForm ? '✕ 취소' : '+ 고객 기록 추가'}
         </button>
       </div>
 
+      {/* 오늘 기록 현황 */}
+      {todayReports.length > 0 && !showForm && (
+        <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">✅</span>
+            <div>
+              <div className="text-emerald-300 font-semibold">오늘 {todayReports.length}명 상담 기록 완료</div>
+              <div className="text-emerald-500/70 text-xs mt-0.5">추가 기록은 위 버튼을 누르세요</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 입력 폼 — 고객 1명당 1건 */}
       {showForm && (
-        <form onSubmit={handleSubmit} className="bg-slate-900 border border-white/10 rounded-2xl p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-slate-900 border border-emerald-500/20 rounded-2xl p-6 space-y-5">
+          <div className="flex items-center justify-between">
+            <h2 className="text-base font-semibold text-white">상담 고객 정보 입력</h2>
+            <span className="text-xs text-slate-500 bg-slate-800 px-2.5 py-1 rounded-full">1건 = 고객 1명</span>
+          </div>
+
+          {error && (
+            <div className="bg-red-500/20 border border-red-500/30 text-red-300 rounded-xl px-4 py-3 text-sm">
+              {error}
+            </div>
+          )}
+
+          {/* 고객명 + 연락처 */}
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm text-slate-300 font-medium mb-2">
+                상담 고객 이름 <span className="text-red-400">*</span>
+              </label>
+              <input
+                type="text"
+                value={form.customerName}
+                onChange={(e) => setForm({ ...form, customerName: e.target.value })}
+                placeholder="고객 성함"
+                autoFocus
+                className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 placeholder-slate-600"
+              />
+            </div>
+            <div>
+              <label className="block text-sm text-slate-300 font-medium mb-2">연락처</label>
+              <input
+                type="tel"
+                value={form.customerPhone}
+                onChange={(e) => setForm({ ...form, customerPhone: e.target.value })}
+                placeholder="010-0000-0000"
+                className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 placeholder-slate-600"
+              />
+            </div>
+          </div>
+
+          {/* 자녀 나이 */}
           <div>
-            <label className="block text-xs text-slate-400 mb-1">만난 가망고객 수 *</label>
-            <input type="number" value={form.prospectCount} onChange={(e) => setForm({ ...form, prospectCount: e.target.value })} required min="0"
-              className="w-full px-3 py-2 bg-slate-800 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <label className="block text-sm text-slate-300 font-medium mb-2">자녀 나이</label>
+            <input
+              type="text"
+              value={form.childAge}
+              onChange={(e) => setForm({ ...form, childAge: e.target.value })}
+              placeholder="예: 7세, 초1, 중2"
+              className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 placeholder-slate-600"
+            />
           </div>
+
+          {/* 상담 내용 */}
           <div>
-            <label className="block text-xs text-slate-400 mb-1">주요 상담 내용</label>
-            <textarea value={form.counselContent} onChange={(e) => setForm({ ...form, counselContent: e.target.value })} rows={3} placeholder="오늘 상담한 주요 내용을 기록하세요"
-              className="w-full px-3 py-2 bg-slate-800 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none" />
+            <label className="block text-sm text-slate-300 font-medium mb-2">상담 내용</label>
+            <textarea
+              value={form.counselContent}
+              onChange={(e) => setForm({ ...form, counselContent: e.target.value })}
+              rows={3}
+              placeholder="오늘 나눈 상담 내용을 기록하세요&#10;예) 3시리즈 관심, 가격 문의, 무료체험 신청 등"
+              className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none placeholder-slate-600"
+            />
           </div>
+
+          {/* 고객 반응 */}
           <div>
-            <label className="block text-xs text-slate-400 mb-1">특이사항</label>
-            <textarea value={form.specialNotes} onChange={(e) => setForm({ ...form, specialNotes: e.target.value })} rows={2} placeholder="특이사항이 있다면 기록하세요"
-              className="w-full px-3 py-2 bg-slate-800 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none" />
+            <label className="block text-sm text-slate-300 font-medium mb-2">고객 반응</label>
+            <div className="flex flex-wrap gap-2 mb-2">
+              {REACTION_OPTIONS.map((opt) => (
+                <button
+                  key={opt}
+                  type="button"
+                  onClick={() => setForm({ ...form, customerReaction: form.customerReaction === opt ? '' : opt })}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                    form.customerReaction === opt
+                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+                      : 'bg-slate-800 text-slate-400 border-white/10 hover:bg-slate-700'
+                  }`}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
+            <input
+              type="text"
+              value={form.customerReaction}
+              onChange={(e) => setForm({ ...form, customerReaction: e.target.value })}
+              placeholder="또는 직접 입력..."
+              className="w-full px-4 py-2.5 bg-slate-800 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 placeholder-slate-600"
+            />
           </div>
-          <div className="text-xs text-slate-500 bg-slate-800/50 rounded-xl px-4 py-3">
-            💡 제출된 보고서에 대한 관리자 평가는 별도 통보됩니다.
+
+          {/* 특이사항 */}
+          <div>
+            <label className="block text-sm text-slate-300 font-medium mb-2">특이사항 (선택)</label>
+            <input
+              type="text"
+              value={form.specialNotes}
+              onChange={(e) => setForm({ ...form, specialNotes: e.target.value })}
+              placeholder="특이사항이 있다면 기록하세요"
+              className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 placeholder-slate-600"
+            />
           </div>
-          <button type="submit" disabled={loading}
-            className="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-sm font-semibold transition-all">
-            {loading ? '제출 중...' : '보고서 제출'}
-          </button>
+
+          {/* 보안 안내 */}
+          <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl">
+            <span className="text-slate-500 flex-shrink-0">🔒</span>
+            <p className="text-xs text-slate-500">관리자 평가는 제출 후 관리자만 볼 수 있으며 본인에게는 표시되지 않습니다.</p>
+          </div>
+
+          <div className="flex gap-3">
+            <button
+              type="button"
+              onClick={() => { setShowForm(false); resetForm(); }}
+              className="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-sm font-medium transition-all"
+            >
+              취소
+            </button>
+            <button
+              type="submit"
+              disabled={loading}
+              className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white rounded-xl text-sm font-bold transition-all"
+            >
+              {loading ? '제출 중...' : '✓ 기록 제출'}
+            </button>
+          </div>
         </form>
       )}
 
-      <div className="space-y-3">
+      {/* 제출 내역 */}
+      <div>
+        <div className="flex items-center justify-between mb-3">
+          <div className="text-sm font-semibold text-slate-400">제출 내역</div>
+          {todayReports.length > 0 && (
+            <span className="text-xs bg-emerald-500/15 text-emerald-400 border border-emerald-500/20 px-2.5 py-1 rounded-full">
+              오늘 {todayReports.length}건
+            </span>
+          )}
+        </div>
+
         {reports.length === 0 ? (
-          <div className="text-center py-12 text-slate-600">제출한 보고서가 없습니다</div>
+          <div className="text-center py-12 text-slate-600">
+            <div className="text-4xl mb-3">📋</div>
+            <p>제출한 보고서가 없습니다</p>
+          </div>
         ) : (
-          reports.map((r) => (
-            <div key={r.id} className="bg-slate-900 border border-white/5 rounded-2xl p-5">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs text-slate-500">{format(new Date(r.submittedAt), 'yyyy년 MM월 dd일 HH:mm')}</span>
-                <span className="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full">가망고객 {r.prospectCount}명</span>
-              </div>
-              {r.counselContent && <div className="text-sm text-white">{r.counselContent}</div>}
-              {r.specialNotes && <div className="text-xs text-slate-400 mt-1">{r.specialNotes}</div>}
-              {/* adminEvaluation 필드는 API에서 이미 제거되어 있음 (블라인드 정책) */}
-            </div>
-          ))
+          <div className="space-y-3">
+            {reports.map((r) => {
+              const isToday = r.submittedAt?.startsWith(today);
+              return (
+                <div
+                  key={r.id}
+                  className={`bg-slate-900 border rounded-2xl p-5 transition-all ${isToday ? 'border-emerald-500/30' : 'border-white/5'}`}
+                >
+                  {/* 상단: 시간 + 오늘 배지 */}
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      {isToday && (
+                        <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/30">
+                          오늘
+                        </span>
+                      )}
+                      <span className="text-xs text-slate-500">
+                        {format(new Date(r.submittedAt), 'MM월 dd일 (EEE) HH:mm', { locale: ko })}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* 고객 정보 그리드 */}
+                  <div className="grid grid-cols-3 gap-2 mb-3">
+                    <div className="bg-slate-800/60 rounded-lg px-3 py-2">
+                      <div className="text-xs text-slate-500 mb-0.5">고객명</div>
+                      <div className="text-sm text-white font-medium">{r.customerName || '-'}</div>
+                    </div>
+                    <div className="bg-slate-800/60 rounded-lg px-3 py-2">
+                      <div className="text-xs text-slate-500 mb-0.5">연락처</div>
+                      <div className="text-sm text-white">{r.customerPhone || '-'}</div>
+                    </div>
+                    <div className="bg-slate-800/60 rounded-lg px-3 py-2">
+                      <div className="text-xs text-slate-500 mb-0.5">자녀 나이</div>
+                      <div className="text-sm text-white">{r.childAge || '-'}</div>
+                    </div>
+                  </div>
+
+                  {r.counselContent && (
+                    <div className="text-sm text-slate-300 mb-2 leading-relaxed">
+                      <span className="text-xs text-slate-500 mr-2">상담</span>{r.counselContent}
+                    </div>
+                  )}
+                  {r.customerReaction && (
+                    <div className="mb-2">
+                      <span className="inline-block text-xs bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 px-2.5 py-1 rounded-full">
+                        {r.customerReaction}
+                      </span>
+                    </div>
+                  )}
+                  {r.specialNotes && (
+                    <div className="text-xs text-slate-500 bg-slate-800/50 rounded-lg px-3 py-2">
+                      <span className="text-slate-600 mr-1">특이사항</span>{r.specialNotes}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         )}
       </div>
     </div>

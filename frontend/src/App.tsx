@@ -6,6 +6,7 @@ import DashboardLayout from './layouts/DashboardLayout';
 import AdminHome from './pages/admin/Home';
 import AdminDashboard from './pages/admin/Dashboard';
 import AdminUsers from './pages/admin/Users';
+import AdminOrgChart from './pages/admin/OrgChart';
 import AdminRooms from './pages/admin/Rooms';
 import AdminSales from './pages/admin/Sales';
 import AdminAttendance from './pages/admin/Attendance';
@@ -15,6 +16,7 @@ import AdminMonthlyCommissions from './pages/admin/MonthlyCommissions';
 import AdminProducts from './pages/admin/Products';
 
 // Staff pages
+import StaffLayout from './layouts/StaffLayout';
 import StaffDashboard from './pages/staff/Dashboard';
 import StaffReports from './pages/staff/Reports';
 import StaffSales from './pages/staff/Sales';
@@ -47,6 +49,7 @@ function App() {
           <Route path="/admin/home" element={<AdminHome />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/org-chart" element={<AdminOrgChart />} />
           <Route path="/admin/rooms" element={<AdminRooms />} />
           <Route path="/admin/sales" element={<AdminSales />} />
           <Route path="/admin/attendance" element={<AdminAttendance />} />
@@ -60,7 +63,7 @@ function App() {
         <Route
           element={
             <ProtectedRoute>
-              <DashboardLayout />
+              <StaffLayout />
             </ProtectedRoute>
           }
         >

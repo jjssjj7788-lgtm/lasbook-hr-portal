@@ -6,7 +6,11 @@ export declare class ActivityReportsService {
         projectId: number;
         employeeId: string;
         prospectCount: number;
+        customerName?: string;
+        customerPhone?: string;
+        childAge?: string;
         counselContent?: string;
+        customerReaction?: string;
         specialNotes?: string;
     }): Promise<{
         employee: {
@@ -19,6 +23,15 @@ export declare class ActivityReportsService {
                 fee1st: number;
                 fee2nd: number;
             };
+            room: {
+                id: number;
+                name: string;
+                createdAt: Date;
+                updatedAt: Date;
+                projectId: number;
+                isActive: boolean;
+                managerId: string | null;
+            } | null;
         };
     } & {
         id: number;
@@ -27,8 +40,12 @@ export declare class ActivityReportsService {
         projectId: number;
         employeeId: string;
         submittedAt: Date;
+        customerName: string | null;
         prospectCount: number;
+        customerPhone: string | null;
+        childAge: string | null;
         counselContent: string | null;
+        customerReaction: string | null;
         specialNotes: string | null;
         adminEvaluation: string | null;
     }>;
@@ -36,6 +53,7 @@ export declare class ActivityReportsService {
         projectId?: number;
         employeeId?: string;
         month?: string;
+        date?: string;
     }): Promise<{
         project: {
             name: string;
@@ -50,6 +68,11 @@ export declare class ActivityReportsService {
                 fee1st: number;
                 fee2nd: number;
             };
+            employeeId: string;
+            room: {
+                id: number;
+                name: string;
+            } | null;
         };
         id: number;
         createdAt: Date;
@@ -57,8 +80,12 @@ export declare class ActivityReportsService {
         projectId: number;
         employeeId: string;
         submittedAt: Date;
+        customerName: string | null;
         prospectCount: number;
+        customerPhone: string | null;
+        childAge: string | null;
         counselContent: string | null;
+        customerReaction: string | null;
         specialNotes: string | null;
     }[]>;
     findOne(id: number, requesterId: string, isAdmin: boolean): Promise<{
@@ -72,6 +99,15 @@ export declare class ActivityReportsService {
                 fee1st: number;
                 fee2nd: number;
             };
+            room: {
+                id: number;
+                name: string;
+                createdAt: Date;
+                updatedAt: Date;
+                projectId: number;
+                isActive: boolean;
+                managerId: string | null;
+            } | null;
         };
         id: number;
         createdAt: Date;
@@ -79,8 +115,12 @@ export declare class ActivityReportsService {
         projectId: number;
         employeeId: string;
         submittedAt: Date;
+        customerName: string | null;
         prospectCount: number;
+        customerPhone: string | null;
+        childAge: string | null;
         counselContent: string | null;
+        customerReaction: string | null;
         specialNotes: string | null;
     }>;
     updateEvaluation(id: number, adminEvaluation: string): Promise<{
@@ -90,8 +130,12 @@ export declare class ActivityReportsService {
         projectId: number;
         employeeId: string;
         submittedAt: Date;
+        customerName: string | null;
         prospectCount: number;
+        customerPhone: string | null;
+        childAge: string | null;
         counselContent: string | null;
+        customerReaction: string | null;
         specialNotes: string | null;
         adminEvaluation: string | null;
     }>;
@@ -102,8 +146,12 @@ export declare class ActivityReportsService {
         projectId: number;
         employeeId: string;
         submittedAt: Date;
+        customerName: string | null;
         prospectCount: number;
+        customerPhone: string | null;
+        childAge: string | null;
         counselContent: string | null;
+        customerReaction: string | null;
         specialNotes: string | null;
         adminEvaluation: string | null;
     }>;

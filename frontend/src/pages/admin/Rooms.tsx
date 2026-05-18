@@ -62,13 +62,21 @@ export default function AdminRooms() {
   };
 
   const handleAddMember = async (roomId: number, employeeId: string) => {
-    await api.patch(`/rooms/${roomId}/members/${employeeId}`);
+    const res = await api.patch(`/rooms/${roomId}/members/${employeeId}`);
     setShowAddMember(null);
+    const count = res.data?.addedCount ?? 1;
+    if (count > 1) alert(`✅ ${count}명이 팀에 추가되었습니다 (하위 직원 포함)`);
     load();
   };
 
-  const handleRemoveMember = async (roomId: number, employeeId: string) => {
-    await api.delete(`/rooms/${roomId}/members/${employeeId}`);
+  const handleRemoveMember = async (roomId: number, employeeId: string, name: string) => {
+    const withSub = confirm(`"${name}" 를 팀에서 제거할까요?\n\n[확인] 본인만 제거\n[취소] 취소`);
+    if (!withSub && !confirm(`하위 직원 전체도 함께 제거하려면 확인을 누르세요`)) return;
+    if (withSub) {
+      await api.delete(`/rooms/${roomId}/members/${employeeId}`);
+    } else {
+      await api.delete(`/rooms/${roomId}/members/${employeeId}/cascade`);
+    }
     load();
   };
 
@@ -195,7 +203,7 @@ export default function AdminRooms() {
                               <button onClick={() => handleSetManager(room.id, member.employeeId)}
                                 className="text-xs px-2.5 py-1 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 rounded-lg transition-colors">담당자 지정</button>
                             )}
-                            <button onClick={() => handleRemoveMember(room.id, member.employeeId)}
+                            <button onClick={() => handleRemoveMember(room.id, member.employeeId, member.name)}
                               className="text-xs px-2.5 py-1 bg-slate-700 hover:bg-red-500/20 text-slate-400 hover:text-red-400 rounded-lg transition-colors">제거</button>
                           </div>
                         </div>
