@@ -320,19 +320,58 @@ export default function StaffSales() {
       )}
 
       {/* 월간 요약 */}
-      <div className="grid grid-cols-3 gap-3">
-        <div className="bg-slate-900 border border-white/5 rounded-xl p-4 text-center">
-          <div className="text-xs text-slate-500 mb-1">유치 건수</div>
-          <div className="text-2xl font-bold text-white">{sales.length}<span className="text-sm text-slate-500 ml-1">건</span></div>
-        </div>
-        <div className="bg-slate-900 border border-white/5 rounded-xl p-4 text-center">
-          <div className="text-xs text-slate-500 mb-1">총 순매출</div>
-          <div className="text-lg font-bold text-indigo-300">{fmt(totalNet)}</div>
-        </div>
-        <div className="bg-slate-900 border border-white/5 rounded-xl p-4 text-center">
-          <div className="text-xs text-slate-500 mb-1">조회 월</div>
+      <div className="bg-slate-900 border border-white/5 rounded-2xl p-4 space-y-3">
+        {/* 상단: 전체 집계 + 월 선택 */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div>
+              <span className="text-xs text-slate-500">전체 유치</span>
+              <span className="text-white font-bold text-lg ml-2">{sales.length}<span className="text-xs text-slate-500 ml-1">건</span></span>
+            </div>
+            <div className="w-px h-5 bg-white/10" />
+            <div>
+              <span className="text-xs text-slate-500">총 순매출</span>
+              <span className="text-indigo-300 font-bold text-base ml-2">{fmt(totalNet)}</span>
+            </div>
+          </div>
           <input type="month" value={month} onChange={e => setMonth(e.target.value)}
-            className="bg-transparent text-white text-sm font-bold focus:outline-none cursor-pointer w-full text-center" />
+            className="bg-transparent text-white text-sm font-bold focus:outline-none cursor-pointer text-right" />
+        </div>
+
+        {/* 하단: 회원 유형별 카운트 */}
+        <div className="grid grid-cols-4 gap-2 pt-2 border-t border-white/5">
+          {[
+            { type: '구독회원',    icon: '📦', color: 'indigo' },
+            { type: '구매회원',    icon: '💳', color: 'blue' },
+            { type: '주인형 점주', icon: '🏪', color: 'amber' },
+            { type: '관리 회원',   icon: '👤', color: 'slate' },
+          ].map(({ type, icon, color }) => {
+            const typeSales = sales.filter((s: any) => s.product?.memberType === type);
+            const count = typeSales.length;
+            const netSum = typeSales.reduce((a: number, s: any) => a + (s.netAmount ?? 0), 0);
+            const colorMap: Record<string, string> = {
+              indigo: 'text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
+              blue:   'text-blue-300 bg-blue-500/10 border-blue-500/20',
+              amber:  'text-amber-300 bg-amber-500/10 border-amber-500/20',
+              slate:  'text-slate-300 bg-slate-700/50 border-white/10',
+            };
+            return (
+              <div key={type} className={`rounded-xl border px-2 py-2.5 text-center ${colorMap[color]}`}>
+                <div className="text-base mb-0.5">{icon}</div>
+                <div className="text-lg font-bold">{count}<span className="text-xs font-normal ml-0.5">건</span></div>
+                {count > 0 && (
+                  <div className="text-xs opacity-80 mt-0.5 font-medium">
+                    {netSum >= 10000000
+                      ? `${(netSum / 10000000).toFixed(1)}천만`
+                      : netSum >= 10000
+                      ? `${Math.floor(netSum / 10000)}만`
+                      : fmt(netSum)}
+                  </div>
+                )}
+                <div className="text-xs opacity-50 truncate mt-0.5">{type}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
 

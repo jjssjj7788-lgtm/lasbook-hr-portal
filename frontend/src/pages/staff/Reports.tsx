@@ -4,6 +4,13 @@ import api from '../../lib/axios';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 
+/** UTC 날짜 문자열을 로컬(KST) yyyy-MM-dd로 변환 */
+function toLocalDate(utcStr: string): string {
+  if (!utcStr) return '';
+  const d = new Date(utcStr);
+  return format(d, 'yyyy-MM-dd');
+}
+
 const REACTION_OPTIONS = ['관심있음 👍', '재방문 예정 📅', '보류 🤔', '거절 ❌', '계약 완료 ✅'];
 
 const EMPTY_FORM = {
@@ -67,10 +74,10 @@ export default function StaffReports() {
   };
 
   // 보기 모드별 필터링
-  const todayReports = reports.filter((r) => r.submittedAt?.startsWith(today));
+  const todayReports = reports.filter((r) => toLocalDate(r.submittedAt) === today);
   const filteredReports = (() => {
-    if (viewMode === 'today') return reports.filter((r) => r.submittedAt?.startsWith(today));
-    if (viewMode === 'date') return reports.filter((r) => r.submittedAt?.startsWith(selectedDate));
+    if (viewMode === 'today') return reports.filter((r) => toLocalDate(r.submittedAt) === today);
+    if (viewMode === 'date') return reports.filter((r) => toLocalDate(r.submittedAt) === selectedDate);
     return reports; // 'all'
   })();
 
@@ -238,7 +245,7 @@ export default function StaffReports() {
         ) : (
           <div className="space-y-3">
             {filteredReports.map((r) => {
-              const isToday = r.submittedAt?.startsWith(today);
+              const isToday = toLocalDate(r.submittedAt) === today;
               return (
                 <div key={r.id}
                   className={`bg-slate-900 border rounded-2xl p-5 transition-all ${isToday ? 'border-emerald-500/30' : 'border-white/5'}`}>

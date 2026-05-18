@@ -85,10 +85,22 @@ export default function StaffPayroll() {
   const myFees = fees.filter((f: any) =>
     f.employee?.employeeId === user?.employeeId || f.employeeId === user?.employeeId
   );
-  const totalFee = myFees.reduce((s: number, f: any) => s + (f.netAmount ?? 0), 0);
+  // 활동비는 합계에 포함하지 않음 — 성과급(monthly commission)만 집계
   const myComm = commissions[0] ?? null;
-  const totalComm = myComm?.netAmount ?? 0;
-  const grandTotal = totalFee + totalComm;
+  const grandTotal = myComm?.netAmount ?? 0;
+
+  // 총합 카드에 표시할 기간: 시작일 ~ 시작일+1달
+  const commPeriodLabel = (() => {
+    if (!contractStart) return month;
+    try {
+      const base = parseISO(contractStart);
+      const [y, m] = month.split('-').map(Number);
+      const offset = (y - base.getFullYear()) * 12 + (m - 1 - base.getMonth());
+      const s = addMonths(base, offset);
+      const e = addMonths(base, offset + 1);
+      return `${format(s, 'M월 d일', { locale: ko })} ~ ${format(e, 'M월 d일', { locale: ko })}`;
+    } catch { return month; }
+  })();
 
   return (
     <div className="p-6 space-y-6 max-w-2xl mx-auto">
@@ -113,11 +125,14 @@ export default function StaffPayroll() {
         </div>
       )}
 
-      {/* 총합 카드 */}
+      {/* 총합 카드 — 성과급(월간 성과급)만 표시, 활동비 제외 */}
       <div className="bg-gradient-to-br from-indigo-600/20 to-indigo-800/20 border border-indigo-500/30 rounded-2xl p-6">
-        <div className="text-xs text-indigo-300 font-semibold uppercase tracking-wider mb-2">{month} 예상 수령액 합계</div>
+        <div className="text-xs text-indigo-300 font-semibold mb-1">성과수당 + 보조금 예상 수령액</div>
+        <div className="text-xs text-slate-500 mb-3">
+          {contractStart ? commPeriodLabel : month}
+        </div>
         <div className="text-4xl font-bold text-white">{loading ? '...' : fmt(grandTotal)}</div>
-        <div className="text-xs text-slate-500 mt-2">* 세후 기준 (3.3% 원천징수 공제 후)</div>
+        <div className="text-xs text-slate-500 mt-2">* 세후 기준 (3.3% 원천징수 공제 후) · 활동비 별도</div>
       </div>
 
       {/* 활동 수당 */}
