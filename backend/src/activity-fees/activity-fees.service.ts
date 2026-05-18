@@ -114,51 +114,106 @@ export class ActivityFeesService {
   }
 
   /**
-   * 2차 지급 조건 자동 확인
-   * 조건1: 판매실적(주인형 점주 OR 구독회원) 1건 이상
-   * 조건2: 일일활동보고서 adminEvaluation = '\u25cb'(○) 1개 이상
+   * 2차 활동비 지급 조건 자동 확인
+   * 조건 A: 구독회원 상품 실결제 200만원 이상 2건 이상
+   * 조건 B: 구독회원 상품 실결제 200만원 이상 1건 + 활동보고서 동그라미(○) 1개 이상
+   * A 또는 B 충족 시 지급
    */
   async checkEligibility2nd(projectId: number) {
-    // TRAINEE 제외한 전체 직원
     const users = await this.prisma.user.findMany({
       where: { projectId, isActive: true, position: { code: { not: 'TRAINEE' } } },
       include: {
         position: true,
-        sales: { where: { projectId } },
+        sales: {
+          where: { projectId },
+          include: { product: { select: { memberType: true } } },
+        },
         activityReports: { where: { projectId } },
       },
     });
 
     return users.map((u) => {
-      // 조건1: 판매 실적
-      const hasSale = u.sales.length > 0;
-      const saleCount = u.sales.length;
+      // 구독회원 상품 200만원 이상 판매 건수
+      const subSales = u.sales.filter(
+        (s: any) => s.product?.memberType === '구독회원' && s.actualAmount >= 2000000,
+      );
+      const subSaleCount = subSales.length;
 
-      // 조건2: 일일활동보고서 동그라미(○) 평가
+      // 활동보고서 동그라미(○) 건수
       const circleReports = u.activityReports.filter(
         (r: any) => r.adminEvaluation === '\u25cb',
       );
-      const hasCircle = circleReports.length > 0;
+      const circleCount = circleReports.length;
 
-      const eligible2nd = hasSale && hasCircle;
+      // 조건 A: 구독회원 200만원+ 2건 이상
+      const conditionA = subSaleCount >= 2;
+      // 조건 B: 구독회원 200만원+ 1건 + 동그라미 보고서 1개
+      const conditionB = subSaleCount >= 1 && circleCount >= 1;
+
+      const eligible2nd = conditionA || conditionB;
 
       return {
         employeeId: u.employeeId,
         name: u.name,
         position: u.position?.name,
         contractStart: u.contractStart,
-        // 1차: 계약 시작일 기준 선지급 (항상 충족)
-        eligible1st: true,
-        // 2차 조건
+        eligible1st: true,  // 1차: 계약 시작과 동시에 지급
         eligible2nd,
         conditions: {
-          hasSale,
-          saleCount,
-          hasCircle,
-          circleCount: circleReports.length,
+          subSaleCount,
+          circleCount,
+          conditionA,
+          conditionB,
+          detail: conditionA
+            ? `구독회원 200만원+ ${subSaleCount}건 달성`
+            : conditionB
+            ? `구독회원 200만원+ ${subSaleCount}건 + 동그라미 보고서 ${circleCount}건 달성`
+            : `구독회원 200만원+ ${subSaleCount}건 / 동그라미 보고서 ${circleCount}건 (미달성)`,
         },
       };
     });
+  }
+
+  /** 본인 2차 조건 조회 */
+  async checkMyEligibility(employeeId: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { employeeId },
+      include: {
+        sales: { include: { product: { select: { memberType: true } } } },
+        activityReports: true,
+      },
+    });
+    if (!user) return null;
+
+    const subSales = user.sales.filter(
+      (s: any) => s.product?.memberType === '구독회원' && s.actualAmount >= 2000000,
+    );
+    const circleReports = user.activityReports.filter(
+      (r: any) => r.adminEvaluation === '\u25cb',
+    );
+
+    const subSaleCount = subSales.length;
+    const circleCount = circleReports.length;
+    const conditionA = subSaleCount >= 2;
+    const conditionB = subSaleCount >= 1 && circleCount >= 1;
+    const eligible2nd = conditionA || conditionB;
+
+    return {
+      eligible2nd,
+      subSaleCount,
+      circleCount,
+      conditionA,
+      conditionB,
+      detail: conditionA
+        ? `구독회원 200만원+ ${subSaleCount}건 달성 ✅`
+        : conditionB
+        ? `구독회원 200만원+ ${subSaleCount}건 + 동그라미 보고서 ${circleCount}건 달성 ✅`
+        : `구독회원 200만원+ ${subSaleCount}건 / 동그라미 보고서 ${circleCount}건`,
+      need: conditionA ? null
+        : subSaleCount >= 1
+        ? `동그라미 보고서 ${1 - circleCount}건 추가 필요`
+        : `구독회원 200만원+ 판매 ${2 - subSaleCount}건 추가 필요`,
+    };
   }
 
   async getPayoutList(projectId: number, month: string) {

@@ -31,9 +31,10 @@ let SalesController = class SalesController {
     getSummary(projectId, month) {
         return this.salesService.getMonthSummary(Number(projectId), month);
     }
-    create(body) {
+    create(body, req) {
         return this.salesService.create({
             ...body,
+            employeeId: req.user.employeeId,
             saleDate: new Date(body.saleDate),
             projectId: Number(body.projectId),
             productId: Number(body.productId),
@@ -76,8 +77,9 @@ __decorate([
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], SalesController.prototype, "create", null);
 __decorate([

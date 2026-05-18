@@ -34,6 +34,9 @@ let ActivityFeesController = class ActivityFeesController {
     checkEligibility(projectId) {
         return this.activityFeesService.checkEligibility2nd(Number(projectId));
     }
+    checkMyEligibility(req) {
+        return this.activityFeesService.checkMyEligibility(req.user.employeeId);
+    }
     create(body) {
         return this.activityFeesService.createFee(body);
     }
@@ -79,6 +82,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], ActivityFeesController.prototype, "checkEligibility", null);
+__decorate([
+    (0, common_1.Get)('my-eligibility'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], ActivityFeesController.prototype, "checkMyEligibility", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),

@@ -112,16 +112,21 @@ let ActivityFeesService = class ActivityFeesService {
             where: { projectId, isActive: true, position: { code: { not: 'TRAINEE' } } },
             include: {
                 position: true,
-                sales: { where: { projectId } },
+                sales: {
+                    where: { projectId },
+                    include: { product: { select: { memberType: true } } },
+                },
                 activityReports: { where: { projectId } },
             },
         });
         return users.map((u) => {
-            const hasSale = u.sales.length > 0;
-            const saleCount = u.sales.length;
+            const subSales = u.sales.filter((s) => s.product?.memberType === '구독회원' && s.actualAmount >= 2000000);
+            const subSaleCount = subSales.length;
             const circleReports = u.activityReports.filter((r) => r.adminEvaluation === '\u25cb');
-            const hasCircle = circleReports.length > 0;
-            const eligible2nd = hasSale && hasCircle;
+            const circleCount = circleReports.length;
+            const conditionA = subSaleCount >= 2;
+            const conditionB = subSaleCount >= 1 && circleCount >= 1;
+            const eligible2nd = conditionA || conditionB;
             return {
                 employeeId: u.employeeId,
                 name: u.name,
@@ -130,13 +135,52 @@ let ActivityFeesService = class ActivityFeesService {
                 eligible1st: true,
                 eligible2nd,
                 conditions: {
-                    hasSale,
-                    saleCount,
-                    hasCircle,
-                    circleCount: circleReports.length,
+                    subSaleCount,
+                    circleCount,
+                    conditionA,
+                    conditionB,
+                    detail: conditionA
+                        ? `구독회원 200만원+ ${subSaleCount}건 달성`
+                        : conditionB
+                            ? `구독회원 200만원+ ${subSaleCount}건 + 동그라미 보고서 ${circleCount}건 달성`
+                            : `구독회원 200만원+ ${subSaleCount}건 / 동그라미 보고서 ${circleCount}건 (미달성)`,
                 },
             };
         });
+    }
+    async checkMyEligibility(employeeId) {
+        const user = await this.prisma.user.findUnique({
+            where: { employeeId },
+            include: {
+                sales: { include: { product: { select: { memberType: true } } } },
+                activityReports: true,
+            },
+        });
+        if (!user)
+            return null;
+        const subSales = user.sales.filter((s) => s.product?.memberType === '구독회원' && s.actualAmount >= 2000000);
+        const circleReports = user.activityReports.filter((r) => r.adminEvaluation === '\u25cb');
+        const subSaleCount = subSales.length;
+        const circleCount = circleReports.length;
+        const conditionA = subSaleCount >= 2;
+        const conditionB = subSaleCount >= 1 && circleCount >= 1;
+        const eligible2nd = conditionA || conditionB;
+        return {
+            eligible2nd,
+            subSaleCount,
+            circleCount,
+            conditionA,
+            conditionB,
+            detail: conditionA
+                ? `구독회원 200만원+ ${subSaleCount}건 달성 ✅`
+                : conditionB
+                    ? `구독회원 200만원+ ${subSaleCount}건 + 동그라미 보고서 ${circleCount}건 달성 ✅`
+                    : `구독회원 200만원+ ${subSaleCount}건 / 동그라미 보고서 ${circleCount}건`,
+            need: conditionA ? null
+                : subSaleCount >= 1
+                    ? `동그라미 보고서 ${1 - circleCount}건 추가 필요`
+                    : `구독회원 200만원+ 판매 ${2 - subSaleCount}건 추가 필요`,
+        };
     }
     async getPayoutList(projectId, month) {
         const fees = await this.prisma.activityFee.findMany({

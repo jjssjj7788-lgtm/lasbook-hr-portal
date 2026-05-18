@@ -97,8 +97,8 @@ export default function AdminAttendance() {
     <div className="p-6 space-y-5 max-w-4xl mx-auto">
       {/* 헤더 */}
       <div>
-        <h1 className="text-2xl font-bold text-white">출석 관리</h1>
-        <p className="text-slate-400 text-sm mt-1">직원을 클릭하여 즉시 출석 체크합니다 · 출석 시 교통비 50,000원 자동 발생</p>
+        <h1 className="text-2xl font-bold text-gray-900">출석 관리</h1>
+        <p className="text-gray-500 text-sm mt-1">직원을 클릭하여 즉시 출석 체크합니다 · 출석 시 교통비 50,000원 자동 발생</p>
       </div>
 
       {/* 날짜 + 지점 */}
@@ -132,15 +132,15 @@ export default function AdminAttendance() {
       <div className="grid grid-cols-3 gap-3">
         <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl px-4 py-3">
           <div className="text-xs text-emerald-400 font-semibold mb-1">✅ 출석</div>
-          <div className="text-2xl font-bold text-white">{presentCount}<span className="text-sm font-normal text-slate-400 ml-1">명</span></div>
+          <div className="text-2xl font-bold text-gray-900">{presentCount}<span className="text-sm font-normal text-gray-500 ml-1">명</span></div>
         </div>
         <div className="bg-red-500/10 border border-red-500/20 rounded-2xl px-4 py-3">
-          <div className="text-xs text-red-400 font-semibold mb-1">❌ 결석</div>
-          <div className="text-2xl font-bold text-white">{absentCount}<span className="text-sm font-normal text-slate-400 ml-1">명</span></div>
+          <div className="text-xs text-red-500 font-semibold mb-1">❌ 결석</div>
+          <div className="text-2xl font-bold text-gray-900">{absentCount}<span className="text-sm font-normal text-gray-500 ml-1">명</span></div>
         </div>
         <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-2xl px-4 py-3">
-          <div className="text-xs text-indigo-400 font-semibold mb-1">💰 교통비</div>
-          <div className="text-xl font-bold text-white">{totalFee.toLocaleString('ko-KR')}<span className="text-sm font-normal text-slate-400 ml-1">원</span></div>
+          <div className="text-xs text-indigo-600 font-semibold mb-1">💰 교통비</div>
+          <div className="text-xl font-bold text-gray-900">{totalFee.toLocaleString('ko-KR')}<span className="text-sm font-normal text-gray-500 ml-1">원</span></div>
         </div>
       </div>
 
@@ -198,13 +198,13 @@ export default function AdminAttendance() {
                 {/* 정보 */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-white font-semibold">{user.name}</span>
-                    <span className={`text-[10px] px-2 py-0.5 rounded-full border font-medium ${POS_BADGE[posCode] ?? 'bg-slate-700 text-slate-300 border-white/10'}`}>
+                    <span className="text-gray-900 font-semibold">{user.name}</span>
+                    <span className={`text-[10px] px-2 py-0.5 rounded-full border font-medium ${POS_BADGE[posCode] ?? 'bg-gray-100 text-gray-600 border-gray-200'}`}>
                       {posName}
                     </span>
-                    {user.room && <span className="text-xs text-indigo-300">💬 {user.room.name}</span>}
+                    {user.room && <span className="text-xs text-indigo-600">💬 {user.room.name}</span>}
                   </div>
-                  <div className="text-xs text-slate-500 mt-0.5">{user.employeeId}</div>
+                  <div className="text-xs text-gray-400 mt-0.5">{user.employeeId}</div>
                 </div>
 
                 {/* 상태 + 버튼 */}
@@ -214,15 +214,15 @@ export default function AdminAttendance() {
                       {/* 상태 배지 */}
                       <div className="flex flex-col items-end gap-0.5">
                         <span className={`text-xs font-bold px-3 py-1 rounded-full ${rec.isPresent ? 'bg-emerald-500/20 text-emerald-300' : 'bg-red-500/20 text-red-300'}`}>
-                          {rec.isPresent ? '\u2705 \uccd9\uc11d' : '\u274c \uacb0\uc11d'}
+                          {rec.isPresent ? '✅ 출석' : '❌ 결석'}
                         </span>
-                        {/* \ub0a0\uc9dc + \uc2dc\uac01 */}
+                        {/* 날짜 + 시각 */}
                         <span className="text-[10px] text-slate-500 font-mono">
                           {(() => {
                             try {
                               const d = new Date(rec.educationDate);
                               const c2 = rec.createdAt ? new Date(rec.createdAt) : null;
-                              const dateStr = `${d.getMonth()+1}\uc6d4 ${d.getDate()}\uc77c`;
+                              const dateStr = `${d.getMonth()+1}월 ${d.getDate()}일`;
                               const timeStr = c2 ? ` ${String(c2.getHours()).padStart(2,'0')}:${String(c2.getMinutes()).padStart(2,'0')}` : '';
                               return dateStr + timeStr;
                             } catch { return ''; }
@@ -230,11 +230,11 @@ export default function AdminAttendance() {
                         </span>
                       </div>
                       {rec.isPresent && (
-                        <span className="text-xs text-indigo-300 font-semibold">{rec.transportFee.toLocaleString()}\uc6d0</span>
+                        <span className="text-xs text-indigo-600 font-semibold">{rec.transportFee.toLocaleString()}원</span>
                       )}
                       <button onClick={() => handleDelete(rec.id)}
-                        className="text-xs text-slate-600 hover:text-red-400 transition-colors px-2 py-1 rounded-lg hover:bg-red-500/10">
-                        \ucde8\uc18c
+                        className="text-xs text-slate-500 hover:text-red-500 transition-colors px-2 py-1 rounded-lg hover:bg-red-50 border border-slate-200 hover:border-red-200">
+                        취소
                       </button>
                     </>
                   ) : (

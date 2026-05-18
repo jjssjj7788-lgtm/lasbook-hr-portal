@@ -205,10 +205,10 @@ export default function AdminDashboard() {
 
       {/* ── KPI 4카드 ── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <KpiCard label="순누계 매출"   value={fmt(cumulNet)}   sub="전체 기간 기준"   gradient="bg-gradient-to-br from-teal-500 to-cyan-700"    icon="📈" />
-        <KpiCard label="이번 달 순매출" value={fmt(monthNet)}  sub="수수료 차감 후"   gradient="bg-gradient-to-br from-violet-500 to-purple-700"  icon="🗓" />
-        <KpiCard label="유치 건수"     value={`${allSales.length}건`} sub={`${month} 기준`} gradient="bg-gradient-to-br from-slate-600 to-slate-800"  icon="📋" />
-        <KpiCard label="고객 수"       value={`${custCount}명`} sub="유니크 고객"      gradient="bg-gradient-to-br from-slate-600 to-slate-800"    icon="👤" />
+        <KpiCard label="순누계 매출"    value={fmt(cumulNet)}          sub="전체 기간 기준"  gradient="bg-gradient-to-br from-teal-400 to-cyan-600"      icon="📈" />
+        <KpiCard label="이번 달 순매출" value={fmt(monthNet)}          sub="수수료 차감 후"  gradient="bg-gradient-to-br from-violet-500 to-purple-700"   icon="🗓" />
+        <KpiCard label="유치 건수"      value={`${allSales.length}건`} sub={`${month} 기준`} gradient="bg-gradient-to-br from-orange-400 to-amber-600"    icon="📋" />
+        <KpiCard label="고객 수"        value={`${custCount}명`}       sub="유니크 고객"     gradient="bg-gradient-to-br from-rose-400 to-pink-600"       icon="👤" />
       </div>
 
       {/* ── 시리즈별 미니 차트 ── 구매회원 */}

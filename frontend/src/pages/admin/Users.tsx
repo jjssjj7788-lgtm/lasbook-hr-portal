@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAuthStore } from '../../store/authStore';
 import api from '../../lib/axios';
 import { format } from 'date-fns';
+import { ko } from 'date-fns/locale';
+import { downloadExcel, parseExcel } from '../../lib/excel';
 
 const POSITION_LABELS: Record<string, string> = { TEBA: '테바', DOJE: '도제', TRAINEE: '수련생', MANAGER: '띠 매니저' };
 const POSITION_COLORS: Record<string, string> = {
@@ -177,13 +179,20 @@ function UserModal({ user, positions, projects, allUsers, onClose, onSave }: any
           {/* 주인형 점주 & 관리자 권한 완전 분리 */}
           <div className="p-4 bg-slate-800/50 rounded-xl space-y-3 border border-white/5">
             <div className="text-xs text-slate-500 font-medium">추가 설정</div>
-            <label className="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" checked={form.isStoreOwner} onChange={(e) => setForm({ ...form, isStoreOwner: e.target.checked })} className="w-4 h-4 mt-0.5 accent-amber-500" />
-              <div>
-                <span className="text-sm text-slate-300">🏪 주인형 점주</span>
-                <p className="text-xs text-slate-500 mt-0.5">지급 방식: 익익월 지연 지급 (시스템 권한과 무관)</p>
+            <div>
+              <div className="text-xs text-slate-400 mb-1.5">🏪 주인형 점주</div>
+              <div className="flex gap-2">
+                {[{ label: 'Y (해당)', val: true }, { label: 'N (해당없음)', val: false }].map(({ label, val }) => (
+                  <button key={String(val)} type="button" onClick={() => setForm({ ...form, isStoreOwner: val })}
+                    className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all border ${
+                      form.isStoreOwner === val
+                        ? val ? 'bg-amber-500/20 text-amber-300 border-amber-500/40' : 'bg-slate-600 text-slate-200 border-slate-500'
+                        : 'bg-slate-700 text-slate-400 border-white/5 hover:bg-slate-600'
+                    }`}>{label}</button>
+                ))}
               </div>
-            </label>
+              <p className="text-xs text-slate-500 mt-1.5">지급 방식: 익익월 지연 지급 (시스템 권한과 무관)</p>
+            </div>
             {user && (
               <div className="pt-2 border-t border-white/5">
                 <div className="text-xs text-slate-500 mb-2">🔑 시스템 권한 (관리자만 변경 가능)</div>
@@ -451,6 +460,95 @@ export default function AdminUsers() {
   const [filterPos, setFilterPos] = useState('');
   const [loading, setLoading] = useState(true);
 
+  // ── 엑셀 다운로드 ──
+  const handleDownloadExcel = () => {
+    const rows = users.map((u) => ({
+      '사원번호': u.employeeId,
+      '이름': u.name,
+      '프로젝트': u.project?.name ?? '',
+      '직급': u.position?.name ?? '',
+      '직급코드': u.position?.code ?? '',
+      '소속팀': u.room?.name ?? '',
+      '상위관리자': u.parent?.name ?? '',
+      '계약시작일': u.contractStart ? format(new Date(u.contractStart), 'yyyy-MM-dd') : '',
+      '연락처': u.phone ?? '',
+      '은행': u.bank ?? '',
+      '계좌번호': u.accountNumber ?? '',
+      '예금주': u.accountHolder ?? '',
+      '주인형점주': u.isStoreOwner ? 'Y' : 'N',
+      '재직여부': u.isActive !== false ? 'Y' : 'N',
+    }));
+    downloadExcel(rows, `인원현황_${format(new Date(), 'yyyyMMdd')}.xlsx`);
+  };
+
+  // ── 양식 다운로드 ──
+  const handleDownloadTemplate = () => {
+    const template = [{
+      '사원번호': 'LAS-001 (필수)',
+      '이름': '홍길동 (필수)',
+      '직급코드': 'TEBA / DOJE / TRAINEE / MANAGER 중 택1 (필수)',
+      '계약시작일': '2026-01-01 (필수)',
+      '초기비밀번호': '1234! (필수)',
+      '연락처': '010-0000-0000',
+      '은행': '국민은행',
+      '계좌번호': '123-456-789012',
+      '예금주': '홍길동',
+      '상위관리자사원번호': '',
+      '주인형점주': 'N',
+    }];
+    downloadExcel(template, '인원_업로드양식.xlsx');
+  };
+
+  // ── 엑셀 업로드 ──
+  const uploadRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadResult, setUploadResult] = useState<{ ok: number; fail: string[] } | null>(null);
+
+  const handleUploadExcel = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    e.target.value = '';
+    setUploading(true);
+    setUploadResult(null);
+    try {
+      const rows = await parseExcel(file);
+      const posMap: Record<string, number> = {};
+      positions.forEach((p: any) => { posMap[p.code] = p.id; });
+      const projectId = selectedProjectId ?? projects[0]?.id ?? 1;
+      let ok = 0;
+      const fail: string[] = [];
+      for (const row of rows) {
+        const code = String(row['직급코드'] ?? '').trim();
+        const posId = posMap[code];
+        if (!posId) { fail.push(`${row['이름']} — 직급코드 오류(${code})`); continue; }
+        try {
+          await api.post('/users', {
+            employeeId: String(row['사원번호'] ?? '').trim(),
+            name: String(row['이름'] ?? '').trim(),
+            projectId,
+            positionId: posId,
+            contractStart: String(row['계약시작일'] ?? format(new Date(), 'yyyy-MM-dd')).trim(),
+            password: String(row['초기비밀번호'] ?? 'Change1!').trim(),
+            phone: String(row['연락처'] ?? '').trim() || null,
+            bank: String(row['은행'] ?? '').trim() || null,
+            accountNumber: String(row['계좌번호'] ?? '').trim() || null,
+            accountHolder: String(row['예금주'] ?? '').trim() || null,
+            parentEmployeeId: String(row['상위관리자사원번호'] ?? '').trim() || null,
+            isStoreOwner: String(row['주인형점주'] ?? 'N').trim() === 'Y',
+            role: 'USER',
+          });
+          ok++;
+        } catch (err: any) {
+          fail.push(`${row['이름']} — ${err.response?.data?.message ?? '등록 실패'}`);
+        }
+      }
+      setUploadResult({ ok, fail });
+      load();
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const load = async () => {
     setLoading(true);
     try {
@@ -478,83 +576,122 @@ export default function AdminUsers() {
   });
 
   return (
-    <div className="flex h-full">
-      {/* 좌측: 직원 목록 */}
-      <div className="flex-1 flex flex-col min-w-0">
-        <div className="p-6 border-b border-white/5">
-          <div className="flex items-center justify-between mb-4">
-            <h1 className="text-2xl font-bold text-white">인사 관리</h1>
-            <button
-              id="addUserBtn"
-              onClick={() => { setEditUser(null); setShowModal(true); }}
-              className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-sm font-medium transition-all shadow-lg shadow-indigo-600/20"
-            >
-              + 직원 등록
-            </button>
+    <div style={{ display: 'flex', height: '100%', background: '#F8FAFC' }}>
+
+      {/* ── 좌측: 직원 목록 ── */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+
+        {/* 헤더 */}
+        <div style={{ padding: '24px 28px', background: '#fff', borderBottom: '1px solid #E2E8F0' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
+            <div>
+              <h1 style={{ fontSize: '20px', fontWeight: 700, color: '#0F172A', margin: 0 }}>인사 관리</h1>
+              <p style={{ fontSize: '13px', color: '#64748B', margin: '3px 0 0' }}>전체 {users.length}명 등록됨</p>
+            </div>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+              <button onClick={handleDownloadTemplate} style={btnStyle('ghost')}>📋 양식</button>
+              <button onClick={handleDownloadExcel} style={btnStyle('ghost')}>⬇ 엑셀 다운</button>
+              <label style={{ ...btnStyle('ghost'), cursor: 'pointer' }}>
+                {uploading ? '업로드 중...' : '⬆ 일괄 업로드'}
+                <input ref={uploadRef} type="file" accept=".xlsx,.xls" style={{ display: 'none' }} onChange={handleUploadExcel} disabled={uploading} />
+              </label>
+              <button id="addUserBtn" onClick={() => { setEditUser(null); setShowModal(true); }} style={btnStyle('primary')}>
+                + 직원 등록
+              </button>
+            </div>
           </div>
-          <div className="flex gap-3">
-            <input
-              type="text"
-              placeholder="이름 또는 사원번호 검색..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="flex-1 px-4 py-2 bg-slate-800 border border-white/10 rounded-xl text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-            <select
-              value={filterPos}
-              onChange={(e) => setFilterPos(e.target.value)}
-              className="px-3 py-2 bg-slate-800 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            >
+
+          {/* 검색/필터 */}
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <div style={{ flex: 1, position: 'relative' }}>
+              <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94A3B8', fontSize: '14px' }}>🔍</span>
+              <input type="text" placeholder="이름 또는 사원번호 검색..." value={search}
+                onChange={e => setSearch(e.target.value)}
+                style={{ width: '100%', paddingLeft: '36px', paddingRight: '12px', paddingTop: '9px', paddingBottom: '9px', border: '1px solid #E2E8F0', borderRadius: '8px', fontSize: '13px', color: '#0F172A', background: '#F8FAFC', boxSizing: 'border-box' }} />
+            </div>
+            <select value={filterPos} onChange={e => setFilterPos(e.target.value)}
+              style={{ padding: '9px 12px', border: '1px solid #E2E8F0', borderRadius: '8px', fontSize: '13px', color: '#0F172A', background: '#F8FAFC', cursor: 'pointer' }}>
               <option value="">전체 직급</option>
-              {['TEBA', 'DOJE', 'MANAGER', 'TRAINEE'].map((c) => (
-                <option key={c} value={c}>{POSITION_LABELS[c]}</option>
-              ))}
+              {['TEBA','DOJE','MANAGER','TRAINEE'].map(c => <option key={c} value={c}>{POSITION_LABELS[c]}</option>)}
             </select>
           </div>
+
+          {/* 업로드 결과 */}
+          {uploadResult && (
+            <div style={{ marginTop: '10px', padding: '10px 14px', borderRadius: '8px', fontSize: '13px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', background: uploadResult.fail.length > 0 ? '#FFFBEB' : '#F0FDF4', border: `1px solid ${uploadResult.fail.length > 0 ? '#FDE68A' : '#BBF7D0'}`, color: uploadResult.fail.length > 0 ? '#92400E' : '#166534' }}>
+              <div>
+                <div style={{ fontWeight: 600 }}>업로드 완료: 성공 {uploadResult.ok}명{uploadResult.fail.length > 0 ? ` / 실패 ${uploadResult.fail.length}건` : ' ✓'}</div>
+                {uploadResult.fail.map((f, i) => <div key={i} style={{ fontSize: '12px', opacity: 0.8 }}>• {f}</div>)}
+              </div>
+              <button onClick={() => setUploadResult(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', opacity: 0.5, fontSize: '14px' }}>✕</button>
+            </div>
+          )}
         </div>
 
-        <div className="flex-1 overflow-y-auto">
+        {/* 직원 테이블 */}
+        <div style={{ flex: 1, overflowY: 'auto', padding: '20px 28px' }}>
           {loading ? (
-            <div className="space-y-2 p-6">
-              {[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-slate-800 rounded-xl animate-pulse" />)}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {[...Array(6)].map((_, i) => <div key={i} style={{ height: '56px', background: '#E2E8F0', borderRadius: '10px', animation: 'pulse 1.5s infinite' }} />)}
             </div>
           ) : filtered.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-slate-600">
-              <span className="text-4xl mb-3">👥</span>
-              <p>등록된 직원이 없습니다</p>
+            <div style={{ textAlign: 'center', padding: '80px 0', color: '#94A3B8' }}>
+              <div style={{ fontSize: '48px', marginBottom: '12px' }}>👥</div>
+              <div style={{ fontSize: '15px', fontWeight: 500 }}>등록된 직원이 없습니다</div>
             </div>
           ) : (
-            <div className="divide-y divide-white/5">
-              {filtered.map((u) => (
-                <div
-                  key={u.employeeId}
+            <div style={{ background: '#fff', borderRadius: '12px', border: '1px solid #E2E8F0', overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
+              {/* 테이블 헤더 */}
+              <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 80px', gap: '0', padding: '10px 20px', background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
+                {['이름 / 사원번호','직급','소속 팀','상위 관리자',''].map((h, i) => (
+                  <div key={i} style={{ fontSize: '11px', fontWeight: 600, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{h}</div>
+                ))}
+              </div>
+              {/* 행 */}
+              {filtered.map((u, idx) => (
+                <div key={u.employeeId}
                   onClick={() => setSelectedId(selectedId === u.employeeId ? null : u.employeeId)}
-                  className={`flex items-center gap-4 px-6 py-4 cursor-pointer transition-all hover:bg-white/3 ${selectedId === u.employeeId ? 'bg-indigo-600/10 border-r-2 border-indigo-500' : ''}`}
+                  style={{
+                    display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 80px',
+                    gap: '0', padding: '13px 20px', cursor: 'pointer',
+                    borderBottom: idx < filtered.length - 1 ? '1px solid #F1F5F9' : 'none',
+                    background: selectedId === u.employeeId ? 'rgba(20,184,166,0.05)' : 'transparent',
+                    borderLeft: selectedId === u.employeeId ? '3px solid #14B8A6' : '3px solid transparent',
+                    transition: 'all 0.15s',
+                  }}
+                  onMouseEnter={e => { if (selectedId !== u.employeeId) e.currentTarget.style.background = '#F8FAFC'; }}
+                  onMouseLeave={e => { if (selectedId !== u.employeeId) e.currentTarget.style.background = 'transparent'; }}
                 >
-                  {/* 아바타 */}
-                  <div className="w-10 h-10 rounded-full bg-indigo-600/20 border border-indigo-500/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-indigo-300 font-bold text-sm">{u.name.charAt(0)}</span>
-                  </div>
-                  {/* 정보 */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-white font-medium">{u.name}</span>
-                      {u.isStoreOwner && <span className="text-xs text-amber-400">🏪</span>}
+                  {/* 이름 */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ width: '34px', height: '34px', minWidth: '34px', borderRadius: '50%', background: 'linear-gradient(135deg,#14B8A6,#0F766E)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 700, fontSize: '13px' }}>
+                      {u.name?.charAt(0)}
                     </div>
-                    <div className="flex items-center gap-2 mt-0.5">
-                      <span className="text-xs text-slate-500">{u.employeeId}</span>
-                      {u.parent && <span className="text-xs text-slate-600">· 상위: {u.parent.name}</span>}
+                    <div>
+                      <div style={{ fontWeight: 600, color: '#0F172A', fontSize: '14px' }}>{u.name} {u.isStoreOwner && <span style={{ fontSize: '11px' }}>🏪</span>}</div>
+                      <div style={{ fontSize: '12px', color: '#94A3B8' }}>{u.employeeId}</div>
                     </div>
                   </div>
-                  {/* 직급 배지 */}
-                  <div className="flex items-center gap-2 flex-shrink-0">
+                  {/* 직급 */}
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
                     <Badge code={u.position?.code} />
+                  </div>
+                  {/* 팀 */}
+                  <div style={{ display: 'flex', alignItems: 'center', fontSize: '13px', color: '#475569' }}>
+                    {u.room?.name ?? <span style={{ color: '#CBD5E1' }}>미배정</span>}
+                  </div>
+                  {/* 상위관리자 */}
+                  <div style={{ display: 'flex', alignItems: 'center', fontSize: '13px', color: '#475569' }}>
+                    {u.parent?.name ?? <span style={{ color: '#CBD5E1' }}>—</span>}
+                  </div>
+                  {/* 수정 버튼 */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                     <button
-                      onClick={(e) => { e.stopPropagation(); setEditUser(u); setShowModal(true); }}
-                      className="text-slate-600 hover:text-white transition-colors text-sm p-1"
-                    >
-                      ✏️
-                    </button>
+                      onClick={e => { e.stopPropagation(); setEditUser(u); setShowModal(true); }}
+                      style={{ background: 'none', border: '1px solid #E2E8F0', borderRadius: '6px', padding: '4px 10px', fontSize: '12px', color: '#64748B', cursor: 'pointer', transition: 'all 0.15s' }}
+                      onMouseEnter={e => { e.currentTarget.style.borderColor = '#14B8A6'; e.currentTarget.style.color = '#14B8A6'; }}
+                      onMouseLeave={e => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.color = '#64748B'; }}
+                    >수정</button>
                   </div>
                 </div>
               ))}
@@ -564,9 +701,7 @@ export default function AdminUsers() {
       </div>
 
       {/* 우측: 상세 패널 */}
-      {selectedId && (
-        <DetailPanel employeeId={selectedId} onClose={() => setSelectedId(null)} />
-      )}
+      {selectedId && <DetailPanel employeeId={selectedId} onClose={() => setSelectedId(null)} />}
 
       {/* 모달 */}
       {showModal && (
@@ -582,3 +717,17 @@ export default function AdminUsers() {
     </div>
   );
 }
+
+function btnStyle(variant: 'primary' | 'ghost'): React.CSSProperties {
+  if (variant === 'primary') return {
+    padding: '9px 18px', borderRadius: '8px', border: 'none', cursor: 'pointer',
+    background: '#14B8A6', color: '#fff', fontWeight: 600, fontSize: '13px',
+    boxShadow: '0 2px 8px rgba(20,184,166,0.3)', transition: 'background 0.15s',
+  };
+  return {
+    padding: '8px 14px', borderRadius: '8px', border: '1px solid #E2E8F0', cursor: 'pointer',
+    background: '#fff', color: '#475569', fontWeight: 500, fontSize: '13px',
+    transition: 'all 0.15s',
+  };
+}
+

@@ -11,60 +11,60 @@ export declare class ActivityFeesService {
     }): Promise<{
         employee: {
             name: string;
+            bank: string | null;
+            accountNumber: string | null;
+            accountHolder: string | null;
             position: {
                 id: number;
-                name: string;
                 projectId: number;
+                name: string;
                 code: string;
                 fee1st: number;
                 fee2nd: number;
             };
-            bank: string | null;
-            accountNumber: string | null;
-            accountHolder: string | null;
         };
     } & {
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
         projectId: number;
-        employeeId: string;
         payMonth: string;
-        netAmount: number;
+        employeeId: string;
         paymentRound: number;
         grossAmount: number;
         isEligible: boolean;
+        netAmount: number;
         paymentStatus: string;
         paidAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
     bulkCreateForProject(projectId: number, payMonth: string, paymentRound: 1 | 2): Promise<(({
         employee: {
             name: string;
+            bank: string | null;
+            accountNumber: string | null;
+            accountHolder: string | null;
             position: {
                 id: number;
-                name: string;
                 projectId: number;
+                name: string;
                 code: string;
                 fee1st: number;
                 fee2nd: number;
             };
-            bank: string | null;
-            accountNumber: string | null;
-            accountHolder: string | null;
         };
     } & {
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
         projectId: number;
-        employeeId: string;
         payMonth: string;
-        netAmount: number;
+        employeeId: string;
         paymentRound: number;
         grossAmount: number;
         isEligible: boolean;
+        netAmount: number;
         paymentStatus: string;
         paidAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
     }) | {
         error: any;
         employeeId: string;
@@ -79,59 +79,59 @@ export declare class ActivityFeesService {
         };
         employee: {
             name: string;
+            bank: string | null;
+            accountNumber: string | null;
+            accountHolder: string | null;
             position: {
                 id: number;
-                name: string;
                 projectId: number;
+                name: string;
                 code: string;
                 fee1st: number;
                 fee2nd: number;
             };
-            bank: string | null;
-            accountNumber: string | null;
-            accountHolder: string | null;
         };
     } & {
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
         projectId: number;
-        employeeId: string;
         payMonth: string;
-        netAmount: number;
+        employeeId: string;
         paymentRound: number;
         grossAmount: number;
         isEligible: boolean;
+        netAmount: number;
         paymentStatus: string;
         paidAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
     })[]>;
     updateStatus(id: number, status: 'PENDING' | 'PAID'): Promise<{
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
         projectId: number;
-        employeeId: string;
         payMonth: string;
-        netAmount: number;
+        employeeId: string;
         paymentRound: number;
         grossAmount: number;
         isEligible: boolean;
+        netAmount: number;
         paymentStatus: string;
         paidAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
     updateEligibility(id: number, isEligible: boolean): Promise<{
         id: number;
-        createdAt: Date;
-        updatedAt: Date;
         projectId: number;
-        employeeId: string;
         payMonth: string;
-        netAmount: number;
+        employeeId: string;
         paymentRound: number;
         grossAmount: number;
         isEligible: boolean;
+        netAmount: number;
         paymentStatus: string;
         paidAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
     checkEligibility2nd(projectId: number): Promise<{
         employeeId: string;
@@ -141,12 +141,22 @@ export declare class ActivityFeesService {
         eligible1st: boolean;
         eligible2nd: boolean;
         conditions: {
-            hasSale: boolean;
-            saleCount: number;
-            hasCircle: boolean;
+            subSaleCount: number;
             circleCount: number;
+            conditionA: boolean;
+            conditionB: boolean;
+            detail: string;
         };
     }[]>;
+    checkMyEligibility(employeeId: string): Promise<{
+        eligible2nd: boolean;
+        subSaleCount: number;
+        circleCount: number;
+        conditionA: boolean;
+        conditionB: boolean;
+        detail: string;
+        need: string | null;
+    } | null>;
     getPayoutList(projectId: number, month: string): Promise<{
         lines: string[];
         fees: ({
@@ -158,17 +168,17 @@ export declare class ActivityFeesService {
             };
         } & {
             id: number;
-            createdAt: Date;
-            updatedAt: Date;
             projectId: number;
-            employeeId: string;
             payMonth: string;
-            netAmount: number;
+            employeeId: string;
             paymentRound: number;
             grossAmount: number;
             isEligible: boolean;
+            netAmount: number;
             paymentStatus: string;
             paidAt: Date | null;
+            createdAt: Date;
+            updatedAt: Date;
         })[];
     }>;
 }

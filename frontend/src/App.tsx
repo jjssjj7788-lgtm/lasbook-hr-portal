@@ -21,6 +21,7 @@ import StaffLayout from './layouts/StaffLayout';
 import StaffDashboard from './pages/staff/Dashboard';
 import StaffReports from './pages/staff/Reports';
 import StaffSales from './pages/staff/Sales';
+import StaffPayroll from './pages/staff/Payroll';
 
 import { useAuthStore } from './store/authStore';
 
@@ -72,6 +73,7 @@ function App() {
           <Route path="/dashboard" element={<StaffDashboard />} />
           <Route path="/dashboard/reports" element={<StaffReports />} />
           <Route path="/dashboard/sales" element={<StaffSales />} />
+          <Route path="/dashboard/payroll" element={<StaffPayroll />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -27,9 +27,10 @@ export class SalesController {
   }
 
   @Post()
-  create(@Body() body: any) {
+  create(@Body() body: any, @Request() req: any) {
     return this.salesService.create({
       ...body,
+      employeeId: req.user.employeeId,
       saleDate: new Date(body.saleDate),
       projectId: Number(body.projectId),
       productId: Number(body.productId),

@@ -31,6 +31,11 @@ export class ActivityFeesController {
   checkEligibility(@Query('projectId') projectId: string) {
     return this.activityFeesService.checkEligibility2nd(Number(projectId));
   }
+
+  @Get('my-eligibility')
+  checkMyEligibility(@Request() req: any) {
+    return this.activityFeesService.checkMyEligibility(req.user.employeeId);
+  }
   @Post()
   create(@Body() body: { employeeId: string; projectId: number; payMonth: string; paymentRound: 1 | 2; isEligible?: boolean }) {
     return this.activityFeesService.createFee(body);

@@ -8,31 +8,31 @@ export declare class ActivityFeesController {
         };
         employee: {
             name: string;
+            bank: string | null;
+            accountNumber: string | null;
+            accountHolder: string | null;
             position: {
                 id: number;
-                name: string;
                 projectId: number;
+                name: string;
                 code: string;
                 fee1st: number;
                 fee2nd: number;
             };
-            bank: string | null;
-            accountNumber: string | null;
-            accountHolder: string | null;
         };
     } & {
-        id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        projectId: number;
         employeeId: string;
+        id: number;
+        projectId: number;
         payMonth: string;
-        netAmount: number;
         paymentRound: number;
         grossAmount: number;
         isEligible: boolean;
+        netAmount: number;
         paymentStatus: string;
         paidAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
     })[]>;
     getPayoutList(projectId: string, month: string): Promise<{
         lines: string[];
@@ -44,18 +44,18 @@ export declare class ActivityFeesController {
                 accountHolder: string | null;
             };
         } & {
-            id: number;
-            createdAt: Date;
-            updatedAt: Date;
-            projectId: number;
             employeeId: string;
+            id: number;
+            projectId: number;
             payMonth: string;
-            netAmount: number;
             paymentRound: number;
             grossAmount: number;
             isEligible: boolean;
+            netAmount: number;
             paymentStatus: string;
             paidAt: Date | null;
+            createdAt: Date;
+            updatedAt: Date;
         })[];
     }>;
     checkEligibility(projectId: string): Promise<{
@@ -66,12 +66,22 @@ export declare class ActivityFeesController {
         eligible1st: boolean;
         eligible2nd: boolean;
         conditions: {
-            hasSale: boolean;
-            saleCount: number;
-            hasCircle: boolean;
+            subSaleCount: number;
             circleCount: number;
+            conditionA: boolean;
+            conditionB: boolean;
+            detail: string;
         };
     }[]>;
+    checkMyEligibility(req: any): Promise<{
+        eligible2nd: boolean;
+        subSaleCount: number;
+        circleCount: number;
+        conditionA: boolean;
+        conditionB: boolean;
+        detail: string;
+        need: string | null;
+    } | null>;
     create(body: {
         employeeId: string;
         projectId: number;
@@ -81,31 +91,31 @@ export declare class ActivityFeesController {
     }): Promise<{
         employee: {
             name: string;
+            bank: string | null;
+            accountNumber: string | null;
+            accountHolder: string | null;
             position: {
                 id: number;
-                name: string;
                 projectId: number;
+                name: string;
                 code: string;
                 fee1st: number;
                 fee2nd: number;
             };
-            bank: string | null;
-            accountNumber: string | null;
-            accountHolder: string | null;
         };
     } & {
-        id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        projectId: number;
         employeeId: string;
+        id: number;
+        projectId: number;
         payMonth: string;
-        netAmount: number;
         paymentRound: number;
         grossAmount: number;
         isEligible: boolean;
+        netAmount: number;
         paymentStatus: string;
         paidAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
     bulkCreate(body: {
         projectId: number;
@@ -114,31 +124,31 @@ export declare class ActivityFeesController {
     }, req: any): Promise<(({
         employee: {
             name: string;
+            bank: string | null;
+            accountNumber: string | null;
+            accountHolder: string | null;
             position: {
                 id: number;
-                name: string;
                 projectId: number;
+                name: string;
                 code: string;
                 fee1st: number;
                 fee2nd: number;
             };
-            bank: string | null;
-            accountNumber: string | null;
-            accountHolder: string | null;
         };
     } & {
-        id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        projectId: number;
         employeeId: string;
+        id: number;
+        projectId: number;
         payMonth: string;
-        netAmount: number;
         paymentRound: number;
         grossAmount: number;
         isEligible: boolean;
+        netAmount: number;
         paymentStatus: string;
         paidAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
     }) | {
         error: any;
         employeeId: string;
@@ -146,33 +156,33 @@ export declare class ActivityFeesController {
     updateStatus(id: string, body: {
         status: 'PENDING' | 'PAID';
     }, req: any): Promise<{
-        id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        projectId: number;
         employeeId: string;
+        id: number;
+        projectId: number;
         payMonth: string;
-        netAmount: number;
         paymentRound: number;
         grossAmount: number;
         isEligible: boolean;
+        netAmount: number;
         paymentStatus: string;
         paidAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
     updateEligibility(id: string, body: {
         isEligible: boolean;
     }, req: any): Promise<{
-        id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        projectId: number;
         employeeId: string;
+        id: number;
+        projectId: number;
         payMonth: string;
-        netAmount: number;
         paymentRound: number;
         grossAmount: number;
         isEligible: boolean;
+        netAmount: number;
         paymentStatus: string;
         paidAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
 }

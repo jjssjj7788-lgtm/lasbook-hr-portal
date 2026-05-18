@@ -6,23 +6,28 @@ import { format } from 'date-fns';
 function fmt(n: number) { return `${n.toLocaleString('ko-KR')}원`; }
 
 function GradeBadge({ grade }: { grade: string | null }) {
-  if (!grade) return <span className="text-slate-600 text-xs">미달성</span>;
-  const isDdi = grade.includes('띠');
+  if (!grade) return <span style={{ fontSize: '12px', color: '#94A3B8' }}>미달성</span>;
   const level = parseInt(grade);
-  const intensity = Math.min(Math.floor(level / 3), 3);
+  const intensity = Math.min(Math.floor(level / 3), 4);
   const colors = [
-    'bg-blue-500/20 text-blue-300 border-blue-500/30',
-    'bg-indigo-500/20 text-indigo-300 border-indigo-500/30',
-    'bg-purple-500/20 text-purple-300 border-purple-500/30',
-    'bg-amber-500/20 text-amber-300 border-amber-500/30',
-    'bg-red-500/20 text-red-300 border-red-500/30',
+    { bg: '#EFF6FF', color: '#1D4ED8', border: '#BFDBFE' },
+    { bg: '#EEF2FF', color: '#4338CA', border: '#C7D2FE' },
+    { bg: '#F5F3FF', color: '#7C3AED', border: '#DDD6FE' },
+    { bg: '#FFFBEB', color: '#D97706', border: '#FDE68A' },
+    { bg: '#FEF2F2', color: '#DC2626', border: '#FECACA' },
   ];
+  const c = colors[intensity];
   return (
-    <span className={`text-xs px-2.5 py-0.5 rounded-full border font-bold ${colors[intensity]}`}>
+    <span style={{ fontSize: '11px', padding: '2px 10px', borderRadius: '20px', fontWeight: 700, background: c.bg, color: c.color, border: `1px solid ${c.border}` }}>
       {grade}
     </span>
   );
 }
+
+const card: React.CSSProperties = {
+  background: '#fff', borderRadius: '12px', border: '1px solid #E2E8F0',
+  padding: '20px', boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
+};
 
 export default function AdminMonthlyCommissions() {
   const { selectedProjectId } = useAuthStore();
@@ -82,110 +87,111 @@ export default function AdminMonthlyCommissions() {
   const totalGross = commissions.reduce((a, c) => a + c.totalGross, 0);
 
   return (
-    <div className="p-6 space-y-6 max-w-6xl mx-auto">
-      <div className="flex items-center justify-between flex-wrap gap-3">
+    <div style={{ padding: '28px', background: '#F8FAFC', minHeight: '100%' }}>
+
+      {/* 헤더 */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '24px' }}>
         <div>
-          <h1 className="text-2xl font-bold text-white">월간 성과급</h1>
-          <p className="text-slate-400 text-sm mt-1">순매출 기준 등급 자동 산정 (200만원 = 1건)</p>
+          <h1 style={{ fontSize: '22px', fontWeight: 700, color: '#0F172A', margin: 0 }}>월간 성과급</h1>
+          <p style={{ fontSize: '13px', color: '#64748B', margin: '4px 0 0' }}>순매출 기준 등급 자동 산정 (200만원 = 1건)</p>
         </div>
-        <div className="flex items-center gap-3 flex-wrap">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
           <input type="month" value={month} onChange={(e) => setMonth(e.target.value)}
-            className="bg-slate-800 border border-white/10 text-white rounded-xl px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            style={{ border: '1px solid #E2E8F0', borderRadius: '8px', padding: '8px 14px', fontSize: '13px', color: '#0F172A', background: '#fff', cursor: 'pointer' }} />
           <button onClick={handleCalcAll} disabled={calcLoading}
-            className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-sm font-medium transition-all">
+            style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '9px 18px', background: '#1F4E79', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>
             {calcLoading ? '⏳ 계산 중...' : '🔄 전체 재계산'}
           </button>
           <button onClick={handleExtract}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${copied ? 'bg-emerald-600 text-white' : 'bg-amber-500 hover:bg-amber-400 text-black'}`}>
+            style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '9px 18px', background: copied ? '#16A34A' : '#F59E0B', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>
             {copied ? '✅ 복사 완료!' : '📋 원터치 이체 추출'}
           </button>
         </div>
       </div>
 
-      {/* 월간 합계 */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-slate-900 border border-white/5 rounded-2xl p-5">
-          <div className="text-xs text-indigo-400 font-semibold uppercase tracking-wider mb-2">세전 총발생액</div>
-          <div className="text-2xl font-bold text-white">{fmt(totalGross)}</div>
-        </div>
-        <div className="bg-slate-900 border border-white/5 rounded-2xl p-5">
-          <div className="text-xs text-emerald-400 font-semibold uppercase tracking-wider mb-2">세후 실수령액</div>
-          <div className="text-2xl font-bold text-white">{fmt(totalNet)}</div>
-          <div className="text-xs text-slate-500 mt-1">3.3% 원천징수 후</div>
-        </div>
-        <div className="bg-slate-900 border border-white/5 rounded-2xl p-5">
-          <div className="text-xs text-purple-400 font-semibold uppercase tracking-wider mb-2">정산 대상</div>
-          <div className="text-2xl font-bold text-white">{commissions.filter((c) => c.totalGross > 0).length}명</div>
-        </div>
-        <div className="bg-slate-900 border border-white/5 rounded-2xl p-5">
-          <div className="text-xs text-amber-400 font-semibold uppercase tracking-wider mb-2">지급 완료</div>
-          <div className="text-2xl font-bold text-white">{commissions.filter((c) => c.paymentStatus === 'PAID').length}명</div>
-        </div>
+      {/* 요약 카드 */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '20px' }}>
+        {[
+          { label: '세전 총발생액', value: fmt(totalGross), color: '#1F4E79' },
+          { label: '세후 실수령액', value: fmt(totalNet), color: '#16A34A', sub: '3.3% 원천징수 후' },
+          { label: '정산 대상', value: `${commissions.filter(c => c.totalGross > 0).length}명`, color: '#7C3AED' },
+          { label: '지급 완료', value: `${commissions.filter(c => c.paymentStatus === 'PAID').length}명`, color: '#D97706' },
+        ].map((item, i) => (
+          <div key={i} style={card}>
+            <div style={{ fontSize: '11px', fontWeight: 600, color: item.color, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>{item.label}</div>
+            <div style={{ fontSize: '22px', fontWeight: 700, color: '#0F172A' }}>{item.value}</div>
+            {item.sub && <div style={{ fontSize: '11px', color: '#94A3B8', marginTop: '4px' }}>{item.sub}</div>}
+          </div>
+        ))}
       </div>
 
-      {/* 이체 포맷 미리보기 */}
-      <div className="bg-slate-900 border border-amber-500/20 rounded-2xl p-5">
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-amber-400 font-semibold text-sm">📋 경영진 보고용 이체 포맷</span>
-          <span className="text-xs text-slate-500">이름 / 세후 실수령액 / 은행명 계좌번호 (예금주)</span>
+      {/* 이체 포맷 */}
+      <div style={{ ...card, border: '1px solid #FDE68A', marginBottom: '20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+          <span style={{ fontSize: '13px', fontWeight: 600, color: '#D97706' }}>📋 경영진 보고용 이체 포맷</span>
+          <span style={{ fontSize: '11px', color: '#94A3B8' }}>이름 / 세후 실수령액 / 은행명 계좌번호 (예금주)</span>
         </div>
-        <div className="space-y-1 font-mono text-xs text-slate-300 bg-slate-950 rounded-xl p-4 max-h-40 overflow-y-auto">
-          {commissions.filter((c) => c.totalGross > 0 && c.paymentStatus === 'PENDING').map((c) => (
-            <div key={c.id}>
+        <div style={{ background: '#F8FAFC', borderRadius: '8px', padding: '14px', maxHeight: '140px', overflowY: 'auto', fontFamily: 'monospace', fontSize: '12px', color: '#374151' }}>
+          {commissions.filter(c => c.totalGross > 0 && c.paymentStatus === 'PENDING').map((c) => (
+            <div key={c.id} style={{ marginBottom: '4px' }}>
               {c.employee?.name} / {c.netAmount.toLocaleString('ko-KR')}원 / {c.employee?.bank || '-'} {c.employee?.accountNumber || '-'} ({c.employee?.accountHolder || c.employee?.name})
             </div>
           ))}
-          {commissions.filter((c) => c.totalGross > 0 && c.paymentStatus === 'PENDING').length === 0 && (
-            <div className="text-slate-600">지급 대기 중인 항목 없음 · 전체 재계산 후 확인하세요</div>
+          {commissions.filter(c => c.totalGross > 0 && c.paymentStatus === 'PENDING').length === 0 && (
+            <div style={{ color: '#94A3B8' }}>지급 대기 중인 항목 없음 · 전체 재계산 후 확인하세요</div>
           )}
         </div>
       </div>
 
-      {/* 성과급 테이블 */}
-      <div className="bg-slate-900 border border-white/5 rounded-2xl overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full">
+      {/* 테이블 */}
+      <div style={{ background: '#fff', borderRadius: '12px', border: '1px solid #E2E8F0', overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
-              <tr className="border-b border-white/5">
+              <tr style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
                 {['이름', '유치건수', '순매출 합계', '등급', '성과수당', '보조금', '세전 총액', '세후 실수령액', '지급예정일', '지급상태'].map((h) => (
-                  <th key={h} className="px-4 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider whitespace-nowrap">{h}</th>
+                  <th key={h} style={{ padding: '10px 16px', textAlign: 'left', fontSize: '11px', fontWeight: 600, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>{h}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody>
               {loading ? (
-                <tr><td colSpan={10} className="text-center py-10 text-slate-600">로딩 중...</td></tr>
+                <tr><td colSpan={10} style={{ textAlign: 'center', padding: '40px', color: '#94A3B8' }}>로딩 중...</td></tr>
               ) : commissions.length === 0 ? (
-                <tr><td colSpan={10} className="text-center py-12 text-slate-600">
-                  <div className="text-4xl mb-3">🏆</div>
-                  <div>전체 재계산 버튼을 클릭하여 성과급을 산정하세요</div>
+                <tr><td colSpan={10} style={{ textAlign: 'center', padding: '60px', color: '#94A3B8' }}>
+                  <div style={{ fontSize: '36px', marginBottom: '10px' }}>🏆</div>
+                  <div style={{ fontSize: '14px' }}>전체 재계산 버튼을 클릭하여 성과급을 산정하세요</div>
                 </td></tr>
               ) : (
-                commissions.map((c) => (
-                  <tr key={c.id} className={`hover:bg-white/2 transition-colors ${c.totalGross === 0 ? 'opacity-40' : ''}`}>
-                    <td className="px-4 py-3">
-                      <div className="text-sm text-white font-medium">{c.employee?.name}</div>
-                      {c.employee?.isStoreOwner && <div className="text-xs text-amber-400 mt-0.5">🏪 지급 지연</div>}
+                commissions.map((c, idx) => (
+                  <tr key={c.id}
+                    style={{ borderBottom: idx < commissions.length - 1 ? '1px solid #F1F5F9' : 'none', opacity: c.totalGross === 0 ? 0.45 : 1 }}
+                    onMouseEnter={e => (e.currentTarget.style.background = '#F8FAFC')}
+                    onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+                  >
+                    <td style={{ padding: '12px 16px' }}>
+                      <div style={{ fontSize: '14px', fontWeight: 600, color: '#0F172A' }}>{c.employee?.name}</div>
+                      {c.employee?.isStoreOwner && <div style={{ fontSize: '11px', color: '#D97706', marginTop: '2px' }}>🏪 지급 지연</div>}
                     </td>
-                    <td className="px-4 py-3 text-sm text-slate-300">{c.salesCount}건</td>
-                    <td className="px-4 py-3 text-sm text-slate-300">{fmt(c.netSalesTotal)}</td>
-                    <td className="px-4 py-3"><GradeBadge grade={c.achievementGrade} /></td>
-                    <td className="px-4 py-3 text-sm text-slate-300">{c.performanceBonus > 0 ? fmt(c.performanceBonus) : '-'}</td>
-                    <td className="px-4 py-3 text-sm text-slate-300">{c.subsidy > 0 ? fmt(c.subsidy) : '-'}</td>
-                    <td className="px-4 py-3 text-sm text-slate-300">{fmt(c.totalGross)}</td>
-                    <td className="px-4 py-3 text-sm font-semibold text-indigo-300">{fmt(c.netAmount)}</td>
-                    <td className="px-4 py-3 text-xs text-slate-400">
+                    <td style={{ padding: '12px 16px', fontSize: '13px', color: '#374151' }}>{c.salesCount}건</td>
+                    <td style={{ padding: '12px 16px', fontSize: '13px', color: '#374151' }}>{fmt(c.netSalesTotal)}</td>
+                    <td style={{ padding: '12px 16px' }}><GradeBadge grade={c.achievementGrade} /></td>
+                    <td style={{ padding: '12px 16px', fontSize: '13px', color: '#374151' }}>{c.performanceBonus > 0 ? fmt(c.performanceBonus) : '-'}</td>
+                    <td style={{ padding: '12px 16px', fontSize: '13px', color: '#374151' }}>{c.subsidy > 0 ? fmt(c.subsidy) : '-'}</td>
+                    <td style={{ padding: '12px 16px', fontSize: '13px', color: '#374151' }}>{fmt(c.totalGross)}</td>
+                    <td style={{ padding: '12px 16px', fontSize: '13px', fontWeight: 700, color: '#1F4E79' }}>{fmt(c.netAmount)}</td>
+                    <td style={{ padding: '12px 16px', fontSize: '12px', color: '#64748B' }}>
                       {c.firstPaymentDue ? format(new Date(c.firstPaymentDue), 'yyyy.MM.dd') : '-'}
                     </td>
-                    <td className="px-4 py-3">
+                    <td style={{ padding: '12px 16px' }}>
                       <button
                         onClick={() => handleStatusToggle(c.id, c.paymentStatus)}
                         disabled={c.totalGross === 0}
-                        className={`text-xs px-3 py-1.5 rounded-lg transition-all font-medium ${
-                          c.paymentStatus === 'PAID'
-                            ? 'bg-emerald-600 text-white hover:bg-emerald-700'
-                            : c.totalGross === 0 ? 'bg-slate-800 text-slate-600 cursor-not-allowed' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
-                        }`}
+                        style={{
+                          fontSize: '12px', padding: '5px 12px', borderRadius: '6px', border: 'none', fontWeight: 600, cursor: c.totalGross === 0 ? 'not-allowed' : 'pointer',
+                          background: c.paymentStatus === 'PAID' ? '#16A34A' : c.totalGross === 0 ? '#F1F5F9' : '#EFF6FF',
+                          color: c.paymentStatus === 'PAID' ? '#fff' : c.totalGross === 0 ? '#94A3B8' : '#1D4ED8',
+                        }}
                       >
                         {c.paymentStatus === 'PAID' ? '지급완료' : '지급 처리'}
                       </button>
